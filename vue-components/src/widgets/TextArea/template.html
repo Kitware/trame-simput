@@ -1,0 +1,18 @@
+<v-textarea
+  v-show="decorator.show"
+
+  :label="label"
+  :hint="help"
+  v-model="model"
+  @change="validate"
+
+  :auto-grow="auto-grow"
+  :autofocus="autofocus"
+  :clearable="clearable"
+  :disabled="disabled"
+  :no-resize="no-resize"
+  :row-height="row-height"
+  :rows="rows"
+
+  :disabled="!decorator.enable"
+/>

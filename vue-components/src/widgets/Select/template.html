@@ -1,0 +1,13 @@
+<v-col class="py-0" v-show="shouldShow">
+  <v-select
+    :key="tsKey"
+    :label="label"
+    :hint="computedHelp"
+    v-model="model"
+    :items="computedItems"
+    :multiple="multiple"
+    @change="validate"
+    :persistent-hint="!!(useRangeHelp || help)"
+    :disabled="!decorator.enable"
+  />
+</v-col>

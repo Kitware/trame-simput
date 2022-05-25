@@ -1,0 +1,5 @@
+<div v-if="available">
+    <v-runtime-template v-if="!noUi" :template="ui" />
+    <slot name="default" v-bind="all" />
+    <slot name="properties" v-bind="properties" />
+</div>

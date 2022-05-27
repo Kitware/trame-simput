@@ -1,0 +1,49 @@
+<layouts>
+    <ui id="Sphere">
+        <input name="Center" />
+        <col>
+            <row>
+                <input name="Radius" />
+                <input name="ThetaResolution" />
+                <input name="PhiResolution" />
+            </row>
+            <row>
+                <input name="StartTheta" />
+                <input name="EndTheta" />
+            </row>
+            <row>
+                <input name="StartPhi" />
+                <input name="EndPhi" />
+            </row>
+            <row class="pb-2">
+                <input class="mx-3" name="LatLongTessellation" />
+                <input class="mx-3" name="GenerateNormals" />
+            </row>
+        </col>
+    </ui>
+    <ui id="Cylinder">
+        <input name="Center" />
+        <col>
+            <row>
+                <input name="Radius" />
+                <input name="Resolution" />
+            </row>
+            <row>
+                <input name="Height" />
+                <input name="Capping" />
+            </row>
+        </col>
+    </ui>
+    <ui id="Cone">
+        <input name="Center" />
+        <input name="Direction" />
+        <col>
+            <row>
+                <input name="Height" />
+                <input name="Radius" />
+                <input name="Resolution" />
+            </row>
+            <input name="Capping" />
+        </col>
+    </ui>
+</layouts>

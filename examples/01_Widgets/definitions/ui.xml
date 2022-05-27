@@ -1,0 +1,14 @@
+<layouts>
+    <ui id="Switch">
+        <col>
+            <row class="mb-2">
+                <input name="BasicOff" />
+                <input class="mx-1" name="BasicOn" />
+                <input name="BasicOnBool" />
+            </row>
+            <row>
+                <input name="BasicOffBool" />
+            </row>
+        </col>
+    </ui>
+</layouts>

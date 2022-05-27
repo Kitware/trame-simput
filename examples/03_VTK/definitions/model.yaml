@@ -1,0 +1,88 @@
+Cone:
+  _tags:
+    - Source
+  Height:
+    _label: Hauteur
+    type: float64
+    size: 1
+  Radius:
+    _label: Rayon
+    type: float64
+    size: 1
+  Resolution:
+    _label: Résolution
+    type: uint16
+    size: 1
+  Center:
+    _label: Centre
+    type: float64
+    size: 3
+  Direction:
+    _label: Direction
+    type: float32
+    size: 3
+  Capping:
+    _label: Fermer
+    type: bool
+    size: 1
+
+Sphere:
+  _tags:
+    - Source
+  Center:
+    type: float64
+    size: 3
+  Radius:
+    type: float64
+    size: 1
+    domains:
+      - type: Min
+        value: 0
+        exclude: true
+  ThetaResolution:
+    type: uint16
+    size: 1
+  PhiResolution:
+    type: uint16
+    size: 1
+  StartTheta:
+    type: float64
+    size: 1
+  EndTheta:
+    type: float64
+    size: 1
+  StartPhi:
+    type: float64
+    size: 1
+  EndPhi:
+    type: float64
+    size: 1
+  LatLongTessellation:
+    _label: Tessellation
+    type: bool
+    size: 1
+  GenerateNormals:
+    _label: Normal
+    type: uint8
+    size: 1
+    domains:
+      - type: Boolean
+
+Cylinder:
+  _tags:
+    - Source
+  Height:
+    size: 1
+    type: float64
+  Radius:
+    size: 1
+    type: float64
+  Center:
+    size: 3
+    type: float64
+  Resolution:
+    size: 1
+    type: uint16
+  Capping:
+    size: bool
+    type: uint8

@@ -1,0 +1,33 @@
+Strict:
+  Single:
+    type: int16
+    size: 1
+    initial: 128
+    domains:
+      - type: Range
+        value_range: [0, 255]
+        level: 0
+        message: Outside of Uint8
+      - type: Range
+        value_range: [-255, 255]
+        level: 1
+        message: Outside of [-255, 255]
+      - type: Range
+        value_range: [-1024, 1024]
+        level: 2
+        message: Outside of [-1024, 1024]
+
+Loose:
+  Single:
+    type: int16
+    size: 1
+    initial: 128
+    domains:
+      - type: Range
+        value_range: [0, 255]
+        level: 0
+        message: Outside of Uint8
+      - type: Range
+        value_range: [-255, 255]
+        level: 1
+        message: Outside of [-255, 255]

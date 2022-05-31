@@ -11,11 +11,13 @@ logger.setLevel(logging.WARN)
 # -----------------------------------------------------------------------------
 # Proxy
 # -----------------------------------------------------------------------------
+
+
 class Proxy:
     """
     A Proxy keep track of a set of a properties for an other object.
     Proxy can flush its local state to the object it controls by calling commit().
-    To reset uncommited changes, just call reset().
+    To reset uncommitted changes, just call reset().
     Proxy properties can be access with the . and [] notation.
     Proxy have states that are easily serializable.
     """
@@ -269,15 +271,16 @@ class Proxy:
         return False
 
     def reset(self):
-        """Undo any uncommited properties"""
+        """Undo any uncommitted properties"""
         self._proxy_manager.clean_proxy_data(self._id)
         if self._dirty_properties:
-            if self._object:
-                self._object_adapter.reset(self)
-
             properties_dirty = list(self._dirty_properties)
             self._dirty_properties.clear()
             self._properties.update(self._pushed_properties)
+
+            if self._object:
+                self._object_adapter.reset(self, properties_dirty)
+
             self._emit("reset", properties_dirty=properties_dirty)
             return True
 
@@ -302,7 +305,7 @@ class Proxy:
         for fn in self._listeners:
             try:
                 fn(topic, *args, **kwargs)
-            except:
+            except Exception:
                 print(f"Error calling {fn} for {topic}:{args}, {kwargs}")
 
     def __getitem__(self, name):
@@ -494,13 +497,14 @@ class ProxyManager:
 
     __id_generator = utils.create_id_generator("pxm_")
 
-    def __init__(self, object_factory=None):
+    def __init__(self, object_factory=None, object_adapter=None):
         self._id = next(ProxyManager.__id_generator)
 
         self._mtime = 1
         self._listeners = set()
         self._life_cycle_listeners = set()
         self._obj_factory = object_factory
+        self._obj_adapter = object_adapter
 
         self._model_definition = {}
         self._id_map = {}
@@ -638,7 +642,12 @@ class ProxyManager:
             "proxy_create_before", proxy_type=proxy_type, initial_values=initial_values
         )
         obj = self._obj_factory.create(proxy_type) if self._obj_factory else None
-        proxy = Proxy(self, proxy_type, obj, **initial_values)
+        proxy = Proxy(
+            self,
+            proxy_type,
+            obj,
+            **{"_object_adapter": self._obj_adapter, **initial_values},
+        )
         self._life_cycle(
             "proxy_create_before_commit",
             proxy_type=proxy_type,

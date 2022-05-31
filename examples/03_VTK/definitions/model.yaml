@@ -35,10 +35,6 @@ Sphere:
   Radius:
     type: float64
     size: 1
-    domains:
-      - type: Min
-        value: 0
-        exclude: true
   ThetaResolution:
     type: uint16
     size: 1
@@ -84,5 +80,5 @@ Cylinder:
     size: 1
     type: uint16
   Capping:
-    size: bool
-    type: uint8
+    size: 1
+    type: bool

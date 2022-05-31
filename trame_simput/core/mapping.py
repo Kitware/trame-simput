@@ -1,3 +1,8 @@
+import logging
+
+logger = logging.getLogger("simput.core.mapping")
+logger.setLevel(logging.INFO)
+
 # ----------------------------------------------------------------------------
 # Default singleton
 # ----------------------------------------------------------------------------
@@ -23,7 +28,7 @@ class ProxyObjectAdapter:
         pass
 
     @staticmethod
-    def reset(proxy):
+    def reset(proxy, props_to_reset=[]):
         pass
 
     @staticmethod
@@ -58,7 +63,7 @@ class ObjectFactory:
         self._map[name] = klass
 
     def create(self, name, **kwargs):
-        """Try to create concreate oject"""
+        """Try to create concreate object"""
         obj = None
         if name in self._map:
             obj = self._map[name](**kwargs)

@@ -119,6 +119,8 @@ class SimputItem(HtmlElement):
     :type extract: list[str]
     :param no_ui: Whether to show simput template UI
     :type no_ui: bool
+    :param v_slot: Fields to be pass to slot template (i.e.: data, ui, domain, properties, all...)
+    :type v_slot: str
     :param children: The children nested within this element
     :type children:  str | list[trame.html.*] | trame.html.* | None
 
@@ -133,6 +135,7 @@ class SimputItem(HtmlElement):
         self._attr_names += [
             ("item_id", ":itemId"),
             "no_ui",
+            ("v_slot", "v-slot"),
         ]
         self._event_names += [
             "dirty",

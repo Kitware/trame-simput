@@ -6,6 +6,8 @@ logger.setLevel(logging.INFO)
 # -----------------------------------------------------------------------------
 # PropertyDomain
 # -----------------------------------------------------------------------------
+
+
 class PropertyDomain:
     """
     A Domain is responsible for:
@@ -44,7 +46,7 @@ class PropertyDomain:
     def set_value(self):
         """
         Ask domain to compute and set a value to a property.
-        return True if the action was succesful.
+        return True if the action was successful.
         """
         return False
 
@@ -101,11 +103,12 @@ class PropertyDomain:
 # -----------------------------------------------------------------------------
 # LabelList
 # -----------------------------------------------------------------------------
-#  name: xxxx                | (optional) provide another name than its type
-#  type: LabelList           | select this domain
+#  name: xxxx      : (optional) provide another name than its type
 # -----------------------------------------------------------------------------
 #  values: [{ text, value}, ...]
 # -----------------------------------------------------------------------------
+
+
 class LabelList(PropertyDomain):
     def __init__(self, _proxy, _property: str, **kwargs):
         super().__init__(_proxy, _property, **kwargs)
@@ -134,19 +137,19 @@ class LabelList(PropertyDomain):
         return False
 
 
-
 # -----------------------------------------------------------------------------
 # Range
 # -----------------------------------------------------------------------------
-#  name: xxxx                | (optional) provide another name than its type
-#  type: Range               | select this domain
+#  name: xxxx                 (optional) provide another name than its type
 # -----------------------------------------------------------------------------
-#  value_range: [0, 1]       | Static range
+#  value_range: [0, 1]        Static range
 # -----------------------------------------------------------------------------
-#  property: PropArray       | Specify property on which an array is defined
-#  initial: [mean, min, max] | Computation to use for setting the value
-#  component: -1 (mag)       | Component to use for range computation
+#  property: PropArray        Specify property on which an array is defined
+#  initial: [mean, min, max]  Computation to use for setting the value
+#  component: -1 (mag)        Component to use for range computation
 # -----------------------------------------------------------------------------
+
+
 class Range(PropertyDomain):
     def __init__(self, _proxy, _property: str, **kwargs):
         super().__init__(_proxy, _property, **kwargs)
@@ -238,6 +241,8 @@ class Range(PropertyDomain):
 # -----------------------------------------------------------------------------
 # Factory management of PropertyDomain
 # -----------------------------------------------------------------------------
+
+
 REGISTERED_DOMAIN_BY_TYPE = {}
 
 
@@ -257,6 +262,8 @@ def register_property_domain(domain_type, domain_class):
 # -----------------------------------------------------------------------------
 # Default Skip
 # -----------------------------------------------------------------------------
+
+
 SKIP_NAMES = [
     "PropertyList",
     "Boolean",
@@ -269,5 +276,7 @@ for name in SKIP_NAMES:
 # -----------------------------------------------------------------------------
 # Default initialization
 # -----------------------------------------------------------------------------
+
+
 register_property_domain("LabelList", LabelList)
 register_property_domain("Range", Range)

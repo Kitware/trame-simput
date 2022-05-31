@@ -1,4 +1,3 @@
-from vtkmodules.vtkFiltersSources import vtkConeSource
 from vtkmodules.vtkRenderingCore import (
     vtkRenderer,
     vtkRenderWindow,
@@ -6,7 +5,7 @@ from vtkmodules.vtkRenderingCore import (
     vtkPolyDataMapper,
     vtkActor,
 )
-from vtkmodules.vtkInteractionStyle import vtkInteractorStyleSwitch
+from vtkmodules.vtkInteractionStyle import vtkInteractorStyleSwitch  # noqa
 
 
 class View:

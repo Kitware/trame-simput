@@ -1,5 +1,5 @@
 Person:
-  _label: Personal Informations
+  _label: Personal information
   _help: |
     This capture the informations needed to contact
     such person.

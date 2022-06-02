@@ -49,13 +49,7 @@ class VuetifyResolver:
                 level = domain.get("level", 0)
                 widget = domain.get("widget", widget)
                 attributes.update(domain.get("ui_attributes", {}))
-                if (
-                    ctype == "LabelList"
-                    or ctype == "PropertyList"
-                    or ctype == "FieldSelector"
-                    or ctype == "ProxyBuilder"
-                    or ctype == "HasTags"
-                ):
+                if ctype in ["LabelList", "HasTags"]:
                     values = domain.get("values", [])
                     prop_name = domain.get("property", None)
                     if len(values) and ctype not in ["HasTags", "ProxyBuilder"]:

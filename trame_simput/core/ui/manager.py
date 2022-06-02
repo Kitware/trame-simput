@@ -53,7 +53,7 @@ class UIManager:
         return self.proxymanager.load_model(yaml_file, yaml_content)
 
     def load_language(self, yaml_file=None, yaml_content=None, clear_ui=False):
-        """Load langage for the objects form"""
+        """Load language for the objects form"""
         if clear_ui:
             self.clear_ui()
 

@@ -1,10 +1,6 @@
 from pathlib import Path
 from .protocol import SimputProtocol
 
-# -----------------------------------------------------------------------------
-# Trame module API
-# -----------------------------------------------------------------------------
-
 # Compute local path to serve
 serve_path = str(Path(__file__).with_name("serve").resolve())
 
@@ -12,13 +8,12 @@ serve_path = str(Path(__file__).with_name("serve").resolve())
 serve = {"__trame_simput": serve_path}
 
 # List of JS files to load (usually from the serve path above)
-scripts = ["__trame_simput/vue-trame_simput.umd.js"]  # FIXME use the one below
-# scripts = ["__trame_simput/vue-trame_simput.umd.min.js"]
+scripts = ["__trame_simput/vue-trame_simput.umd.min.js"]
 
 # List of Vue plugins to install/load
 vue_use = ["trame_simput"]
 
-# Optional if you want to execute custom initialization at module load
+
 def setup(server, **kwargs):
     server.add_protocol_to_configure(
         lambda root_protocol: root_protocol.registerLinkProtocol(SimputProtocol())

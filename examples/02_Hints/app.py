@@ -1,7 +1,7 @@
 from pathlib import Path
 from trame.app import get_server
 from trame.ui.vuetify import SinglePageLayout
-from trame.widgets import vuetify, simput, html
+from trame.widgets import vuetify, simput
 
 from trame_simput import get_simput_manager
 

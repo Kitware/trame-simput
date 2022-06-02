@@ -105,7 +105,7 @@ class SimputController:
             self.push(id=_id, domains=_id)
 
     def refresh(self, id=0, property=""):
-        logger.info("refesh")
+        logger.info("refresh")
         proxy = self._ui_manager.proxymanager.get(id)
         if not proxy:
             return

@@ -20,4 +20,7 @@ def get_simput_manager(
     ui_manager = UIManager(pxm, resolver)
     UI_MANAGERS[ui_manager.id] = ui_manager
 
+    if id is not None:
+        UI_MANAGERS[id] = ui_manager
+
     return ui_manager

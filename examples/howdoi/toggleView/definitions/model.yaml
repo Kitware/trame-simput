@@ -1,0 +1,19 @@
+AdvancedViewExample:
+  Basic:
+    _label: Basic input
+    _help: >-
+      This is a basic input
+    type: uint8
+    initial: 0
+  Advanced:
+    _label: Advanced input
+    _help: >-
+      This is only shown in advanced mode
+    type: uint8
+    initial: 1
+    domains:
+    - name: decorator
+      type: TagDecoratorDomain
+      properties:
+        tags:
+        - "advanced"

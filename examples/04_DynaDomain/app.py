@@ -88,7 +88,7 @@ with SinglePageLayout(server) as layout:
 
     with layout.content:
         simput.SimputItem(
-            item_id=f"'{item.id}'",
+            item_id=f"{item.id}",
         )
 
 # -----------------------------------------------------------------------------

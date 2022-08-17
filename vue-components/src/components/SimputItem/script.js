@@ -27,7 +27,7 @@ export default {
     };
     this.onChange = ({ id, type }) => {
       /* eslint-disable eqeqeq */
-      if (id && this.itemId == id) {
+      if (id && this.proxyId == id) {
         this.data = this.getSimput().getData(id);
         this.domains = this.getSimput().getDomains(id);
       }
@@ -40,13 +40,13 @@ export default {
     };
     this.onReload = (name) => {
       if (name === 'data') {
-        this.data = this.getSimput().getData(this.itemId, true);
+        this.data = this.getSimput().getData(this.proxyId, true);
       }
       if (name === 'ui') {
-        this.ui = this.getSimput().getUI(this.itemId, true);
+        this.ui = this.getSimput().getUI(this.proxyId, true);
       }
       if (name === 'domain') {
-        this.domains = this.getSimput().getDomains(this.itemId, true);
+        this.domains = this.getSimput().getDomains(this.proxyId, true);
       }
     };
     this.simputChannel.$on('connect', this.onConnect);
@@ -69,16 +69,19 @@ export default {
       this.update();
     },
     // ui() {
-    //   console.log(`~~~~ UI(${this.itemId})`);
+    //   console.log(`~~~~ UI(${this.proxyId})`);
     // },
     // noUi() {
-    //   console.log(`~~~~ noUI(${this.itemId})`);
+    //   console.log(`~~~~ noUI(${this.proxyId})`);
     // },
     // available() {
-    //   console.log(`~~~~ available(${this.itemId})`);
+    //   console.log(`~~~~ available(${this.proxyId})`);
     // },
   },
   computed: {
+    proxyId() {
+      return `${this.itemId}`;
+    },
     type() {
       return this.data && this.data.type;
     },
@@ -91,7 +94,7 @@ export default {
     all() {
       const { data, domains, properties } = this;
       return {
-        id: this.itemId,
+        id: this.proxyId,
         data,
         domains,
         properties,
@@ -100,9 +103,9 @@ export default {
   },
   methods: {
     update() {
-      if (this.itemId) {
-        this.data = this.getSimput().getData(this.itemId);
-        this.domains = this.getSimput().getDomains(this.itemId);
+      if (this.proxyId) {
+        this.data = this.getSimput().getData(this.proxyId);
+        this.domains = this.getSimput().getDomains(this.proxyId);
         if (this.type) {
           this.ui = this.getSimput().getUI(this.type);
         }

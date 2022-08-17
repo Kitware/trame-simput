@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.0.2 (2022-08-17)
+### Fix
+* **reload:** Expose reload helper on Simput widget ([`1d5de80`](https://github.com/Kitware/trame-simput/commit/1d5de80a8d406362e00422fa41dee8b589cce4b2))
+
 ## v2.0.1 (2022-06-02)
 ### Fix
 * **registration:** Allow custom name registration ([`06c689e`](https://github.com/Kitware/trame-simput/commit/06c689ebb7c45dccba68a2b6f8adde6be74c02c3))

@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.0.3 (2022-08-17)
+### Fix
+* **item_id:** The JS will always convert it to a string ([`43be2f0`](https://github.com/Kitware/trame-simput/commit/43be2f09e75a9903344fa775f2e73cd0f967b79b))
+
 ## v2.0.2 (2022-08-17)
 ### Fix
 * **reload:** Expose reload helper on Simput widget ([`1d5de80`](https://github.com/Kitware/trame-simput/commit/1d5de80a8d406362e00422fa41dee8b589cce4b2))

@@ -60,7 +60,7 @@ class SimputProtocol(LinkProtocol):
 
     @exportRpc("simput.ui.get")
     def get_ui(self, manager_id, type):
-        logger.info("get_ui")
+        logger.info("get_ui(%s)", type)
         uim = get_simput_manager(manager_id)
         msg = {"type": type, "ui": uim.ui(type)}
         self.send_message(msg)
@@ -68,7 +68,7 @@ class SimputProtocol(LinkProtocol):
 
     @exportRpc("simput.domains.get")
     def get_domains(self, manager_id, id):
-        logger.info("get_domains")
+        logger.info("get_domains(%s)", id)
         msg = {"id": id, "domains": {}}
 
         pxm = get_simput_manager(manager_id).proxymanager

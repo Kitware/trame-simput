@@ -12,11 +12,7 @@ class HtmlElement(AbstractElement):
 
 class Simput(HtmlElement):
     """
-    Simput data management component. This must be set as the root of a layout to provide children with Simput data. See simput docs |simput_link| for more info.
-
-    .. |simput_link| raw:: html
-
-        <a href="https://github.com/Kitware/py-simput" target="_blank">here</a>
+    Simput data management component. This must be set as the root of a layout to provide children with Simput data.
 
     :param ui_manager: See simput docs |simput_link| for more info
     :param domains_manager: See simput docs |simput_link| for more info
@@ -35,8 +31,10 @@ class Simput(HtmlElement):
         ns = f"simput_{self._id}"
         if prefix:
             ns = prefix
+        self._ref = kwargs.get("ref", ns)
         self._helper = SimputController(self._server, ui_manager, namespace=ns)
         self._attributes["namespace"] = f'namespace="{ns}"'
+        self._attributes["ref"] = f'ref="{self._ref}"'
         self._attr_names += ["query"]
 
     @property
@@ -56,7 +54,6 @@ class Simput(HtmlElement):
         """
         Unapply properties
         """
-
         self._helper.reset()
 
     def push(self, id=None, type=None, domains=None, proxy=None, **kwargs):
@@ -82,6 +79,18 @@ class Simput(HtmlElement):
 
     def refresh(self, id=0, property="", **kwargs):
         self._helper.refresh(id, property)
+
+    def reload(self, name):
+        self._server.js_call(self._ref, "reload", name)
+
+    def reload_domain(self):
+        self.reload("domain")
+
+    def reload_data(self):
+        self.reload("data")
+
+    def reload_ui(self):
+        self.reload("ui")
 
     @property
     def changeset(self):

@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.0.4 (2022-08-18)
+### Fix
+* **domains:** Make sure to clear all domains when reloading ([`4ed2be6`](https://github.com/Kitware/trame-simput/commit/4ed2be658d5a0b9bd74adf1d5bf79864791904b9))
+
 ## v2.0.3 (2022-08-17)
 ### Fix
 * **item_id:** The JS will always convert it to a string ([`43be2f0`](https://github.com/Kitware/trame-simput/commit/43be2f09e75a9903344fa775f2e73cd0f967b79b))

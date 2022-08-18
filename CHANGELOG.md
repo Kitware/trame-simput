@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.0.5 (2022-08-18)
+### Fix
+* **domain:** Don't lookup domain with invalid id ([`f9a0f55`](https://github.com/Kitware/trame-simput/commit/f9a0f55dffa2c84a0dc4a7768e41e0ac0a8ae9c5))
+
 ## v2.0.4 (2022-08-18)
 ### Fix
 * **domains:** Make sure to clear all domains when reloading ([`4ed2be6`](https://github.com/Kitware/trame-simput/commit/4ed2be658d5a0b9bd74adf1d5bf79864791904b9))

@@ -186,6 +186,10 @@ export class DataManager {
     this.wsClient.getRemote().Trame.trigger(`${this.namespace}ResetCache`, []);
   }
 
+  resetDomains() {
+    this.cache.domains = {};
+  }
+
   connectBus(bus) {
     if (this.comm.indexOf(bus) === -1) {
       this.comm.push(bus);

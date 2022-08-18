@@ -46,6 +46,7 @@ export default {
         this.ui = this.getSimput().getUI(this.proxyId, true);
       }
       if (name === 'domain') {
+        this.getSimput().resetDomains();
         this.domains = this.getSimput().getDomains(this.proxyId, true);
       }
     };

@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.0.6 (2022-08-22)
+### Fix
+* **widgets:** Self._helper.changeset is a property ([`8e7f540`](https://github.com/Kitware/trame-simput/commit/8e7f540c2267c6c686fb9811436da28d5744b12a))
+
 ## v2.0.5 (2022-08-18)
 ### Fix
 * **domain:** Don't lookup domain with invalid id ([`f9a0f55`](https://github.com/Kitware/trame-simput/commit/f9a0f55dffa2c84a0dc4a7768e41e0ac0a8ae9c5))

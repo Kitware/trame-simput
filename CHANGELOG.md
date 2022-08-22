@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v2.0.7 (2022-08-22)
+### Fix
+* **domain:** Handle invalid domain request ([`dc2cc9c`](https://github.com/Kitware/trame-simput/commit/dc2cc9c98e485317e5de4a5f3b5d9bdfe1dc329c))
+
+### Documentation
+* **examples:** Fix attribute name to match latest api ([`987aad8`](https://github.com/Kitware/trame-simput/commit/987aad86414a83ad19ad01fd82ae91fa153ed75a))
+
 ## v2.0.6 (2022-08-22)
 ### Fix
 * **widgets:** Self._helper.changeset is a property ([`8e7f540`](https://github.com/Kitware/trame-simput/commit/8e7f540c2267c6c686fb9811436da28d5744b12a))

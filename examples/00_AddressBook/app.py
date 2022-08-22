@@ -164,14 +164,14 @@ with SinglePageWithDrawerLayout(server) as layout:
                         with vuetify.VListItemTitle():
                             simput.SimputItem(
                                 "{{FirstName}} {{LastName}}",
-                                itemId="id",
+                                item_id="id",
                                 no_ui=True,
                                 extract=["FirstName", "LastName"],
                             )
 
     with layout.content:
         with vuetify.VContainer(fluid=True):
-            simput.SimputItem(itemId=("active_id", None))
+            simput.SimputItem(item_id=("active_id", None))
 
 
 # -----------------------------------------------------------------------------

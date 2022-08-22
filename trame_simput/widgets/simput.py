@@ -97,7 +97,7 @@ class Simput(HtmlElement):
         """
         All unapplied changesets
         """
-        return self._helper.changeset()
+        return self._helper.changeset
 
     @property
     def has_changes(self):

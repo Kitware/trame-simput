@@ -43,12 +43,7 @@ Detailed documents
 
 * `Definitions explained <./docs/definitions.md>`_
 * `API <./docs/api.md>`_
-* Examples
-   * `Address book <./examples/00_AddressBook>`_
-   * `Widgets <./examples/01_Widgets>`_
-   * `Hints <./examples/02_Hints>`_
-   * `VTK <./examples/03_VTK>`_
-   * `Dynamic domain <./examples/04_DynaDomain>`_
+* Examples: `Address book <./examples/00_AddressBook>`_, `Widgets <./examples/01_Widgets>`_, `Hints <./examples/02_Hints>`_, `VTK <./examples/03_VTK>`_, `Dynamic domain <./examples/04_DynaDomain>`_
 
 License: Apache Software License
 -----------------------------------------------------------

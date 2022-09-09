@@ -2,6 +2,16 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.0 (2022-09-09)
+### Feature
+* **proxy:** Enable overriding proxy id ([`e94344a`](https://github.com/Kitware/trame-simput/commit/e94344a8495835b00e011dbc78843ee70857e2a0))
+
+### Documentation
+* **readme:** List examples ([`ca78816`](https://github.com/Kitware/trame-simput/commit/ca78816abc98040f305c5af2a199533c02c6d468))
+* **readme:** List examples ([`505c73f`](https://github.com/Kitware/trame-simput/commit/505c73f8ea93c88e98469e179c7d9c472b68705f))
+* **readme:** List examples ([`12b6ce5`](https://github.com/Kitware/trame-simput/commit/12b6ce5e595c784f1ac97fe062dd5247173278db))
+* **general:** Update project usage and doc ([`bba905d`](https://github.com/Kitware/trame-simput/commit/bba905d05e2588456685a715a0ba6c3591941680))
+
 ## v2.0.7 (2022-08-22)
 ### Fix
 * **domain:** Handle invalid domain request ([`dc2cc9c`](https://github.com/Kitware/trame-simput/commit/dc2cc9c98e485317e5de4a5f3b5d9bdfe1dc329c))

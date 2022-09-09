@@ -52,12 +52,13 @@ class Proxy:
         __proxy_manager,
         __type,
         __object=None,
+        _proxy_id=None,
         _name=None,
         _tags=[],
         _object_adapter=None,
         **kwargs,
     ):
-        self._id = next(Proxy.__id_generator)
+        self._id = _proxy_id or next(Proxy.__id_generator)
         self._name = _name or __type
         self._mtime = __proxy_manager.mtime
         self._proxy_manager = __proxy_manager
@@ -625,11 +626,13 @@ class ProxyManager:
     # Proxy management
     # -------------------------------------------------------------------------
 
-    def create(self, proxy_type, **initial_values):
+    def create(self, proxy_type, proxy_id=None, **initial_values):
         """
-        Create a new instance of a proxy using an proxy_type along with
-        maybe a set of property values that we want to pre-initialise using the
-        **kwargs approach.
+        Create a new instance of a proxy using a proxy_type.
+        Optionally, you can provide a proxy_id to override the id of the created
+        proxy instance.
+        And you can provide a set of property values that will be pre-initialized
+        using the **kwargs approach.
         """
 
         # Can't create object if no definition available
@@ -646,7 +649,11 @@ class ProxyManager:
             self,
             proxy_type,
             obj,
-            **{"_object_adapter": self._obj_adapter, **initial_values},
+            **{
+                "_proxy_id": proxy_id,
+                "_object_adapter": self._obj_adapter,
+                **initial_values,
+            },
         )
         self._life_cycle(
             "proxy_create_before_commit",

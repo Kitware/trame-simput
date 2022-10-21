@@ -96,10 +96,8 @@ class Proxy:
                 self.set_property(_prop_name, kwargs[_prop_name])
             elif isinstance(_init_def, dict):
                 logger.error("Don't know how to deal with domain yet: %s", _init_def)
-            elif _init_def:
-                self.set_property(_prop_name, _init_def)
             else:
-                self.set_property(_prop_name, None)
+                self.set_property(_prop_name, _init_def)
 
         # handle domains
         for _prop_name, _prop_def in self.definition.items():

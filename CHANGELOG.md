@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.1 (2022-10-21)
+### Fix
+* **proxy:** Handling of false-like initial value ([`b5434fe`](https://github.com/Kitware/trame-simput/commit/b5434fe2fea578e93e9f4fa61c3d69f40a3e8342))
+
 ## v2.1.0 (2022-09-09)
 ### Feature
 * **proxy:** Enable overriding proxy id ([`e94344a`](https://github.com/Kitware/trame-simput/commit/e94344a8495835b00e011dbc78843ee70857e2a0))

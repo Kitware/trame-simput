@@ -56,6 +56,7 @@ class Proxy:
         _name=None,
         _tags=[],
         _object_adapter=None,
+        skip_object_init=False,
         **kwargs,
     ):
         self._id = _proxy_id or next(Proxy.__id_generator)
@@ -76,7 +77,10 @@ class Proxy:
             self._object_adapter = mapping.get_default_object_adapter()
 
         # Proxy can be fully virtual (:None)
-        self._object = __object
+        if skip_object_init:
+            self._object = None
+        else:
+            self._object = __object
 
         # proxy id that we created and therefore that we should manage
         self._own = set()
@@ -133,6 +137,8 @@ class Proxy:
         # May need several pass
         while self.domains_apply():
             pass
+
+        self._object = __object
 
     def __del__(self):
         if self._object_adapter:
@@ -624,7 +630,7 @@ class ProxyManager:
     # Proxy management
     # -------------------------------------------------------------------------
 
-    def create(self, proxy_type, proxy_id=None, **initial_values):
+    def create(self, proxy_type, proxy_id=None, existing_obj=None, **initial_values):
         """
         Create a new instance of a proxy using a proxy_type.
         Optionally, you can provide a proxy_id to override the id of the created
@@ -642,11 +648,17 @@ class ProxyManager:
         self._life_cycle(
             "proxy_create_before", proxy_type=proxy_type, initial_values=initial_values
         )
-        obj = self._obj_factory.create(proxy_type) if self._obj_factory else None
+
+        if existing_obj is not None:
+            obj = existing_obj
+        else:
+            obj = self._obj_factory.create(proxy_type) if self._obj_factory else None
+
         proxy = Proxy(
             self,
             proxy_type,
             obj,
+            skip_object_init=existing_obj is not None,
             **{
                 "_proxy_id": proxy_id,
                 "_object_adapter": self._obj_adapter,
@@ -660,7 +672,11 @@ class ProxyManager:
             proxy=proxy,
         )
 
-        proxy.commit()
+        if existing_obj is not None:
+            proxy.fetch()
+        else:
+            proxy.commit()
+
         self._life_cycle(
             "proxy_create_after_commit",
             proxy_type=proxy_type,

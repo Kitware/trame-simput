@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v2.2.0 (2022-10-25)
+### Feature
+* **proxy:** Enable instantiation with existing object ([`7ae48bc`](https://github.com/Kitware/trame-simput/commit/7ae48bc6bc6372042af72d5873114df817fe50a8))
+
+### Fix
+* **widgets:** Make array parameters use multiple rows ([`0454339`](https://github.com/Kitware/trame-simput/commit/045433948748d4f5f9d842ae1c4482127520a727))
+
 ## v2.1.1 (2022-10-21)
 ### Fix
 * **proxy:** Handling of false-like initial value ([`b5434fe`](https://github.com/Kitware/trame-simput/commit/b5434fe2fea578e93e9f4fa61c3d69f40a3e8342))

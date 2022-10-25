@@ -42,11 +42,14 @@
     <v-col
       class="py-1"
       v-if="size != 1"
-      v-for="i in computedSize"
-      :key="i"
-      v-bind="getComponentProps(i-1)"
     >
-      <v-row no-gutters class="align-center">
+      <v-row
+        no-gutters
+        class="align-center"
+        v-for="i in computedSize"
+        :key="i"
+        v-bind="getComponentProps(i-1)"
+      >
         <v-text-field
           class="mt-0"
           :name="`${data().type}:${name}:${i}`"

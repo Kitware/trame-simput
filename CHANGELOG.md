@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.2.1 (2022-10-25)
+### Fix
+* **proxy:** Log warning if no defintion was found in set_property ([`6d432eb`](https://github.com/Kitware/trame-simput/commit/6d432ebec4860c1165c524f650d1cc507e7b62b2))
+
 ## v2.2.0 (2022-10-25)
 ### Feature
 * **proxy:** Enable instantiation with existing object ([`7ae48bc`](https://github.com/Kitware/trame-simput/commit/7ae48bc6bc6372042af72d5873114df817fe50a8))

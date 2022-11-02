@@ -137,7 +137,7 @@ class SimputController:
             self._server.protocol_call("simput.ui.get", self._ui_manager.id, type)
 
         try:
-            if domains and int(domains):
+            if domains:  # removing int requirement, may have unknown effects
                 self._server.protocol_call(
                     "simput.domains.get", self._ui_manager.id, domains
                 )

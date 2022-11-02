@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.2.2 (2022-11-02)
+### Fix
+* **domain:** Remove int constraint on proxy id ([`c8cf5bd`](https://github.com/Kitware/trame-simput/commit/c8cf5bdaee3e31d60e33f2adfbfe21d7ade6e69e))
+
 ## v2.2.1 (2022-10-25)
 ### Fix
 * **proxy:** Log warning if no definition was found in set_property ([`6d432eb`](https://github.com/Kitware/trame-simput/commit/6d432ebec4860c1165c524f650d1cc507e7b62b2))

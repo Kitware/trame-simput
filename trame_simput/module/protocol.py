@@ -73,9 +73,11 @@ class SimputProtocol(LinkProtocol):
 
         pxm = get_simput_manager(manager_id).proxymanager
         pxm.clean_proxy_domains(id)
-        _domain = pxm.get(id).domains_state
-        self._log(id, "domain", _domain)
-        msg["domains"] = _domain
+        proxy = pxm.get(id)
+        if proxy:
+            _domain = proxy.domains_state
+            self._log(id, "domain", _domain)
+            msg["domains"] = _domain
 
         self.send_message(msg)
         return msg

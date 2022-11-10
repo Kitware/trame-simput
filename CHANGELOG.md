@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.2.3 (2022-11-10)
+### Fix
+* **domains:** No exception with invalid id ([`c6a069f`](https://github.com/Kitware/trame-simput/commit/c6a069fe35b8a005c25bd5a1b0a2aeecccb8daad))
+
 ## v2.2.2 (2022-11-02)
 ### Fix
 * **domain:** Remove int constraint on proxy id ([`c8cf5bd`](https://github.com/Kitware/trame-simput/commit/c8cf5bdaee3e31d60e33f2adfbfe21d7ade6e69e))

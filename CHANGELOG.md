@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.2.4 (2022-12-20)
+### Fix
+* **domain:** Test against js string undefined and null ([`8fc0490`](https://github.com/Kitware/trame-simput/commit/8fc049066e5c7484fde5c68011e59f7f24478fa2))
+
 ## v2.2.3 (2022-11-10)
 ### Fix
 * **domains:** No exception with invalid id ([`c6a069f`](https://github.com/Kitware/trame-simput/commit/c6a069fe35b8a005c25bd5a1b0a2aeecccb8daad))

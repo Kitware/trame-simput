@@ -136,14 +136,10 @@ class SimputController:
         if type:
             self._server.protocol_call("simput.ui.get", self._ui_manager.id, type)
 
-        try:
-            if domains:  # removing int requirement, may have unknown effects
-                self._server.protocol_call(
-                    "simput.domains.get", self._ui_manager.id, domains
-                )
-        except ValueError:
-            # Invalid domain so just skip it...
-            pass
+        if domains and domains not in ["undefined", "null"]:
+            self._server.protocol_call(
+                "simput.domains.get", self._ui_manager.id, domains
+            )
 
     def emit(self, topic, **kwargs):
         logger.info("emit: %s", topic)

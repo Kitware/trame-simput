@@ -89,11 +89,14 @@ export class DataManager {
       .getSession()
       .subscribe('simput.push', ([event]) => {
         const { id, data, domains, type, ui } = event;
+        let idChange = false;
+        let uiChange = false;
         if (data) {
           delete this.pending[id];
           const before = JSON.stringify(this.cache.data[id]?.properties);
           const after = JSON.stringify(data.properties);
           if (before !== after) {
+            idChange = true;
             this.cache.data[id] = data;
             //   console.log(`data(${id}) == CHANGE`);
             //   // console.group('before');
@@ -114,6 +117,7 @@ export class DataManager {
           const after = JSON.stringify(domains);
           // console.log(JSON.stringify(domains, null, 2));
           if (before !== after) {
+            idChange = true;
             this.cache.domains[id] = domains;
             // console.log(`domains(${id}) == CHANGE`);
             // } else {
@@ -121,12 +125,21 @@ export class DataManager {
           }
         }
         if (ui) {
+          uiChange = true;
           // console.log(`ui(${type})`);
           delete this.pending[type];
           this.cache.ui[type] = ui;
         }
 
-        this.notify('change', { id, type });
+        const notifyPayload = {};
+        if (idChange) {
+          notifyPayload.id = id;
+        }
+        if (uiChange) {
+          notifyPayload.type = type;
+        }
+
+        this.notify('change', notifyPayload);
         if (ui) {
           this.nextTS += 1;
           this.notify('templateTS');
@@ -156,7 +169,8 @@ export class DataManager {
         }
       });
 
-    this.onDirty = ({ id, name, names }) => {
+    // this needs to be network de-bounced
+    this.onDirty = async ({ id, name, names }) => {
       const dirtySet = [];
       if (name) {
         const value = this.cache.data[id].properties[name];

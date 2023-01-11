@@ -80,10 +80,15 @@ export class DataManager {
     this.namespace = namespace;
     this.cache = null;
     this.comm = [];
-    this.pending = {};
+    this.pendingData = {};
+    this.pendingDomain = {};
+    this.pendingUI = {};
+    this.pendingDirtyData = {};
     this.wsClient = wsClient;
     this.resetCache();
     this.nextTS = 1;
+    this.dirtySet = [];
+    this.expectedServerProps = {};
     this.subscription = this.wsClient
       .getConnection()
       .getSession()
@@ -92,12 +97,18 @@ export class DataManager {
         let idChange = false;
         let uiChange = false;
         if (data) {
-          delete this.pending[id];
-          const before = JSON.stringify(this.cache.data[id]?.properties);
+          delete this.pendingData[id];
+          delete this.pendingDirtyData[id];
+          const before = JSON.stringify(this.expectedServerProps[id]);
           const after = JSON.stringify(data.properties);
           if (before !== after) {
             idChange = true;
             this.cache.data[id] = data;
+            if (before == undefined) {
+              this.expectedServerProps[id] = JSON.parse(
+                JSON.stringify(data.properties)
+              ); // deep copy
+            }
             //   console.log(`data(${id}) == CHANGE`);
             //   // console.group('before');
             //   // console.log(before);
@@ -112,7 +123,7 @@ export class DataManager {
           this.cache.data[id].original = JSON.parse(after);
         }
         if (domains) {
-          delete this.pending[`d-${id}`];
+          delete this.pendingDomain[id];
           const before = JSON.stringify(this.cache.domains[id]);
           const after = JSON.stringify(domains);
           // console.log(JSON.stringify(domains, null, 2));
@@ -127,7 +138,7 @@ export class DataManager {
         if (ui) {
           uiChange = true;
           // console.log(`ui(${type})`);
-          delete this.pending[type];
+          delete this.pendingUI[type];
           this.cache.ui[type] = ui;
         }
 
@@ -144,6 +155,8 @@ export class DataManager {
           this.nextTS += 1;
           this.notify('templateTS');
         }
+
+        this.flushDirtySet();
       });
     this.subscriptionUI = this.wsClient
       .getConnection()
@@ -161,7 +174,7 @@ export class DataManager {
           for (let i = 0; i < ids.length; i++) {
             if (this.cache.data[ids[i]]) {
               if (action === 'changed') {
-                console.log('getData from data-change', ids[i]);
+                // console.log('getData from data-change', ids[i]);
                 this.getData(ids[i], true);
               }
             }
@@ -169,26 +182,53 @@ export class DataManager {
         }
       });
 
-    // this needs to be network de-bounced
-    this.onDirty = async ({ id, name, names }) => {
-      const dirtySet = [];
+    this.onDirty = ({ id, name, names }) => {
       if (name) {
         const value = this.cache.data[id].properties[name];
-        dirtySet.push({ id, name, value });
+        let idx = this.dirtySet.findIndex(
+          (e) => e.id === id && e.name === name
+        );
+        if (idx > -1) this.dirtySet.splice(idx, 1);
+        this.dirtySet.push({ id, name, value });
       }
       if (names) {
         for (let i = 0; i < names.length; i++) {
-          const n = names[i];
-          const value = this.cache.data[id].properties[n];
-          dirtySet.push({ id, name: n, value });
+          const name = names[i];
+          const value = this.cache.data[id].properties[name];
+          let idx = this.dirtySet.findIndex(
+            (e) => e.id === id && e.name === name
+          );
+          if (idx > -1) this.dirtySet.splice(idx, 1);
+          this.dirtySet.push({ id, name, value });
         }
       }
 
-      console.log(' > dirty', dirtySet);
-      this.wsClient
-        .getRemote()
-        .Trame.trigger(`${this.namespace}Update`, [dirtySet]);
+      // console.log(' > dirty', [...this.dirtySet]);
+      this.flushDirtySet();
     };
+  }
+
+  async flushDirtySet() {
+    if (!this.dirtySet.length) {
+      return;
+    }
+
+    if (Object.keys(this.pendingDirtyData).length) {
+      return;
+    }
+
+    const dirtySet = this.dirtySet;
+    this.dirtySet = [];
+    dirtySet.forEach(({ id, name, value }) => {
+      this.expectedServerProps[id][name] = value;
+      this.pendingDirtyData[id] = true;
+    });
+    // console.log('sending: ', dirtySet);
+    await this.wsClient
+      .getRemote()
+      .Trame.trigger(`${this.namespace}Update`, [dirtySet]);
+
+    this.flushDirtySet();
   }
 
   resetCache() {
@@ -229,9 +269,9 @@ export class DataManager {
 
   getData(id, forceFetch = false) {
     const data = this.cache.data[id];
-    if ((!data || forceFetch) && !this.pending[id]) {
-      console.log(' > fetch data', id, forceFetch);
-      this.pending[id] = true;
+    if ((!data || forceFetch) && !this.pendingData[id]) {
+      // console.log(' > fetch data', id, forceFetch);
+      this.pendingData[id] = true;
       this.wsClient
         .getRemote()
         .Trame.trigger(`${this.namespace}Fetch`, [], { id });
@@ -243,9 +283,9 @@ export class DataManager {
   getDomains(id, forceFetch = false) {
     const domains = this.cache.domains[id];
 
-    if ((!domains || forceFetch) && !this.pending[`d-${id}`]) {
-      console.log(' > fetch domain', id, forceFetch);
-      this.pending[`d-${id}`] = true;
+    if ((!domains || forceFetch) && !this.pendingDomain[id]) {
+      // console.log(' > fetch domain', id, forceFetch);
+      this.pendingDomain[id] = true;
       this.wsClient
         .getRemote()
         .Trame.trigger(`${this.namespace}Fetch`, [], { domains: id });
@@ -257,9 +297,9 @@ export class DataManager {
   getUI(type, forceFetch = false) {
     const ui = this.cache.ui[type];
 
-    if ((!ui || forceFetch) && !this.pending[type]) {
-      console.log(' > fetch ui', type, forceFetch);
-      this.pending[type] = true;
+    if ((!ui || forceFetch) && !this.pendingUI[type]) {
+      // console.log(' > fetch ui', type, forceFetch);
+      this.pendingUI[type] = true;
       this.wsClient
         .getRemote()
         .Trame.trigger(`${this.namespace}Fetch`, [], { type });
@@ -273,7 +313,7 @@ export class DataManager {
   }
 
   refresh(id, name) {
-    console.log(' > refresh', id, name);
+    // console.log(' > refresh', id, name);
     this.wsClient
       .getRemote()
       .Trame.trigger(`${this.namespace}Refresh`, [id, name]);

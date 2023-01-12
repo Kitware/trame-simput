@@ -2,6 +2,11 @@
 
 <!--next-version-placeholder-->
 
+## v2.2.5 (2023-01-12)
+### Fix
+* **data:** Race condition between update and dirty ([`7c92db1`](https://github.com/Kitware/trame-simput/commit/7c92db150affa1a623a7a6ce0399aca644baea79))
+* **notification:** Only trigger change on domain/ui when changed ([`6d5ca00`](https://github.com/Kitware/trame-simput/commit/6d5ca00f4e6e312da34f0bd56aed5814a40992b5))
+
 ## v2.2.4 (2022-12-20)
 ### Fix
 * **domain:** Test against js string undefined and null ([`8fc0490`](https://github.com/Kitware/trame-simput/commit/8fc049066e5c7484fde5c68011e59f7f24478fa2))

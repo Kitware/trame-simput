@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.2.6 (2023-02-23)
+### Fix
+* **version:** Add __version__ ([`f6b755c`](https://github.com/Kitware/trame-simput/commit/f6b755cb48a1efbea15f285ca13e73bc4a365985))
+
 ## v2.2.5 (2023-01-12)
 ### Fix
 * **data:** Race condition between update and dirty ([`7c92db1`](https://github.com/Kitware/trame-simput/commit/7c92db150affa1a623a7a6ce0399aca644baea79))

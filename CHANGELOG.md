@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.0 (2023-02-28)
+### Feature
+* **widgets:** Toggle disable/readonly for inputs ([`11552a9`](https://github.com/Kitware/trame-simput/commit/11552a90fc9bf9b56d7a00a47483652d746f4714))
+
 ## v2.2.6 (2023-02-23)
 ### Fix
 * **version:** Add __version__ ([`f6b755c`](https://github.com/Kitware/trame-simput/commit/f6b755cb48a1efbea15f285ca13e73bc4a365985))

@@ -34,6 +34,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
     'no-resize': {
       type: Boolean,
       default: false,

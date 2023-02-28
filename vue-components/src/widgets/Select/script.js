@@ -53,6 +53,14 @@ export default {
       type: Number,
       default: 3,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
   },
   created() {
     this.onQuery = (query) => {

@@ -41,6 +41,14 @@ export default {
     step: {
       type: Number,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {

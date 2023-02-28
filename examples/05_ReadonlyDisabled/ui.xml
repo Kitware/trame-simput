@@ -1,0 +1,15 @@
+<layouts>
+    <ui id="ExampleModel">
+        <col>
+            <row>
+                <input name="NormalInput" />
+            </row>
+            <row>
+                <input name="DisabledInput" disabled="" />
+            </row>
+            <row>
+                <input name="ReadonlyInput" readonly="" />
+            </row>
+        </col>
+    </ui>
+</layouts>

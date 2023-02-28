@@ -40,7 +40,8 @@
         :min="computedMin"
         :max="computedMax"
         :step="computedStep"
-        :disabled="!decorator.enable"
+        :disabled="disabled || !decorator.enable"
+        :readonly="readonly"
       />
       <div v-if="help && showHelp" class="mt-0 mb-2 text-caption text--secondary">
         {{ help }}
@@ -76,7 +77,8 @@
           :min="computedMin"
           :max="computedMax"
           :step="computedStep"
-          :disabled="!decorator.enable"
+          :disabled="disabled || !decorator.enable"
+          :readonly="readonly"
         />
         <div class="text-truncate text-right text-caption text--secondary" style="max-width: 60px;min-width: 60px;">{{ model[i - 1] }}</div>
         <v-btn

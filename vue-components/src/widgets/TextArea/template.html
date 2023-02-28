@@ -9,10 +9,10 @@
   :auto-grow="auto-grow"
   :autofocus="autofocus"
   :clearable="clearable"
-  :disabled="disabled"
+  :readonly="readonly"
   :no-resize="no-resize"
   :row-height="row-height"
   :rows="rows"
 
-  :disabled="!decorator.enable"
+  :disabled="disabled || !decorator.enable"
 />

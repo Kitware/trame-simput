@@ -23,6 +23,14 @@ export default {
       type: String,
     },
     initial: {},
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {

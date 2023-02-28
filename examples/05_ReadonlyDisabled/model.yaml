@@ -1,0 +1,21 @@
+ExampleModel:
+  NormalInput:
+    _label: Normal input
+    _help: >-
+      This is a normal input
+    type: uint8
+    initial: 0
+  DisabledInput:
+    _label: Disabled input
+    _help: >-
+      This input is disabled. It's controlled by setting
+      disabled="" in the UI XML definition.
+    type: uint8
+    initial: 1
+  ReadonlyInput:
+    _label: Readonly input
+    _help: >-
+      This input is read-only. It's controlled by setting
+      readonly="" in the UI XML definition.
+    type: uint8
+    initial: 2

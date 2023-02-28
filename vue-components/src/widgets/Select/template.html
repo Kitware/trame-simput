@@ -8,6 +8,7 @@
     :multiple="multiple"
     @change="validate"
     :persistent-hint="!!(useRangeHelp || help)"
-    :disabled="!decorator.enable"
+    :disabled="disabled || !decorator.enable"
+    :readonly="readonly"
   />
 </v-col>

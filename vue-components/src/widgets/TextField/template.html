@@ -36,7 +36,8 @@
         :persistent-hint="showHelp"
         :hide-details="!showHelp || !help"
 
-        :disabled="!decorator.enable"
+        :disabled="disabled || !decorator.enable"
+        :readonly="readonly"
       />
     </v-col>
     <v-col
@@ -62,7 +63,8 @@
           @keydown.enter="validate(i)"
           hide-details
 
-          :disabled="!decorator.enable"
+          :disabled="disabled || !decorator.enable"
+          :readonly="readonly"
         />
         <v-btn
           v-if="computedSizeControl"
@@ -70,7 +72,8 @@
           icon
           x-small
           @click="deleteEntry(i - 1)"
-          :disabled="!decorator.enable"
+          :disabled="disabled || !decorator.enable"
+          :readonly="readonly"
         >
           <v-icon>mdi-minus-circle-outline</v-icon>
         </v-btn>

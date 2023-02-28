@@ -44,6 +44,14 @@ export default {
       type: String,
       default: 'same',
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {

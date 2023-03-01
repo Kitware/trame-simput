@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.1 (2023-03-01)
+### Fix
+* **widgets:** Add Simput.register_layout() ([#15](https://github.com/Kitware/trame-simput/issues/15)) ([`0c84866`](https://github.com/Kitware/trame-simput/commit/0c848668a6a96ab9d6c54078c77eb297b8a0dd05))
+
 ## v2.3.0 (2023-02-28)
 ### Feature
 * **widgets:** Toggle disable/readonly for inputs ([`11552a9`](https://github.com/Kitware/trame-simput/commit/11552a90fc9bf9b56d7a00a47483652d746f4714))

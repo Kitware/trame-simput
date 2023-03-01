@@ -45,7 +45,7 @@ ctrl.simput_reset = simput_widget.reset
 # -----------------------------------------------------------------------------
 
 with SinglePageLayout(server) as layout:
-    layout.root = simput_widget
+    simput_widget.register_layout(layout)
 
     with layout.toolbar as toolbar:
         layout.title.set_text("SimPut Widgets")

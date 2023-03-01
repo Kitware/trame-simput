@@ -12,7 +12,7 @@ class HtmlElement(AbstractElement):
 
 class Simput(HtmlElement):
     """
-    Simput data management component. This must be set as the root of a layout to provide children with Simput data.
+    Simput data management component. This must be registered as the root of a layout to provide children with Simput data.
 
     :param ui_manager: See simput docs |simput_link| for more info
     :param domains_manager: See simput docs |simput_link| for more info
@@ -23,7 +23,8 @@ class Simput(HtmlElement):
     :param children: The children nested within this element
     :type children:  str | list[trame.html.*] | trame.html.* | None
 
-    >>> layout.root = simput.Simput(ui_manager, prefix="myForm")
+    >>> simput_widget = simput.Simput(ui_manager, prefix="myForm")
+    >>> simput_widget.register_layout(layout)
     """
 
     def __init__(self, ui_manager, prefix=None, children=None, **kwargs):
@@ -76,6 +77,14 @@ class Simput(HtmlElement):
 
         """
         self._helper.update(change_set)
+
+    def register_layout(self, layout):
+        """
+        Register self to the root of the layout and
+        clear any previously registered elements (to support hot reloading)
+        """
+        self.clear()
+        layout.root = self
 
     def refresh(self, id=0, property="", **kwargs):
         self._helper.refresh(id, property)

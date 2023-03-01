@@ -12,7 +12,7 @@ widget or get your hand on its **proxymanager** to manage its proxies.
 
 ## Simput manager
 
-The simput manager instance let you do the following:
+The simput manager instance lets you do the following:
 - Access its linked **proxymanager**
 - Reset cached UI layout elements by calling **clear_ui()**
 - Load definitions, language and UI by calling one of the following methods
@@ -296,6 +296,72 @@ def message(self, value):
 
 def hints(self):
     """Return a set of (level, message) when running the validation for the info level"""
+```
+
+## UI Widgets
+
+### Simput Widget
+
+The `Simput` widget is a trame component that is used as the UI data management provider.
+This component must be registered as the root of the layout with the `register_layout(layout)` method (preferred method) or by setting `layout.root = simput_widget`.
+
+```python
+@property
+def helper(self):
+    """Simput helper object"""
+
+def apply(self, **kwargs):
+    """Flush modified properties so they can be pushed to their concrete objects"""
+
+def reset(self, **kwargs):
+    """Unapply properties"""
+
+def push(self, id=None, type=None, domains=None, proxy=None, **kwargs):
+    """Ask server to push data, ui, or constraints"""
+
+def update(self, change_set, **kwargs):
+    """
+    List of properties and value to update
+
+    >>> change_set = [
+    ... {"id":"12", "name":"Radius", "value": 0.75},
+    ... {"id": "12", "name":"Resolution", "value": 24}
+    ... ]
+    """
+
+def register_layout(self, layout):
+    """
+    Register self to the root of the layout and
+    clear any previously registered elements (to support hot reloading)
+    """
+
+def refresh(self, id=0, property="", **kwargs):
+    """Refresh the given id's property"""
+
+def reload(self, name):
+    """Reload the given name (data, ui, domain)"""
+
+@property
+def changeset(self):
+    """All unapplied changesets"""
+
+@property
+def has_changes(self):
+    """Does the changeset have content?"""
+
+@property
+def auto_update(self):
+    """Whether to automatically apply changes"""
+```
+
+### SimputItem Widget
+
+`SimputItem` is a trame component that is used to display a Simput item. This must be child of a Simput component to have access to Simput data.
+
+```python
+item_proxy = pxm.create("Item")
+# Create a SimputItem widget to display the item
+simput.SimputItem(item_id=f"{item_proxy.id}")
 ```
 
 ## Domains

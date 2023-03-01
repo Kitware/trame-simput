@@ -23,7 +23,7 @@ item = simput_manager.proxymanager.create("ExampleModel")
 # -----------------------------------------------------------------------------
 
 with SinglePageLayout(server) as layout:
-    layout.root = simput_widget
+    simput_widget.register_layout(layout)
 
     with layout.toolbar as toolbar:
         layout.title.set_text("Simput readonly and disabled example")

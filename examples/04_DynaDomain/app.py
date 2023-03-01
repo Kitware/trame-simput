@@ -72,7 +72,7 @@ with SinglePageLayout(server) as layout:
         ctrl.simput_apply = simput_widget.apply
         ctrl.simput_reset = simput_widget.reset
         ctrl.simput_reload_domain = simput_widget.reload_domain
-        layout.root = simput_widget
+        simput_widget.register_layout(layout)
 
     with layout.toolbar as toolbar:
         layout.title.set_text("SimPut Advanced view")

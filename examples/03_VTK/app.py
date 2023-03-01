@@ -120,7 +120,7 @@ ICONS = [
 ]
 
 with SinglePageWithDrawerLayout(server) as layout:
-    layout.root = simput_widget
+    simput_widget.register_layout(layout)
 
     with layout.drawer as drawer:
         with vuetify.VTabs(

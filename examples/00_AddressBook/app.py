@@ -100,7 +100,7 @@ ctrl.simput_reset = simput_widget.reset
 
 with SinglePageWithDrawerLayout(server) as layout:
     layout.title.set_text("SimPut Address Book")
-    layout.root = simput_widget
+    simput_widget.register_layout(layout)
 
     with layout.toolbar:
         vuetify.VSpacer()

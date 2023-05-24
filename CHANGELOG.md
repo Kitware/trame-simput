@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.2 (2023-05-24)
+### Fix
+* **widgets:**  Apply layout information on columns instead of rows ([`2a6b964`](https://github.com/Kitware/trame-simput/commit/2a6b96476fbc0ff35bc4e2e85fdf6091ca62cf56))
+
 ## v2.3.1 (2023-03-01)
 ### Fix
 * **widgets:** Add Simput.register_layout() ([#15](https://github.com/Kitware/trame-simput/issues/15)) ([`0c84866`](https://github.com/Kitware/trame-simput/commit/0c848668a6a96ab9d6c54078c77eb297b8a0dd05))

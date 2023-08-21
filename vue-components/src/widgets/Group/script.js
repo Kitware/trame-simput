@@ -33,14 +33,21 @@ export default {
       }
 
       let visibleCount = 0;
-      this.$slots.default.forEach((vNode) => {
+      const helper = (vNode) => {
+        // if there is no component associated with this slot
+        // look recursively in its children elements.
+        // This can happen in the case of a nested group
+        if (vNode.componentInstance == null) {
+          vNode?.children?.forEach(helper);
+        }
         const show =
           vNode.componentInstance?.shouldShow ||
           vNode.componentInstance?.decorator?.show;
         if (show) {
           visibleCount++;
         }
-      });
+      };
+      this.$slots.default?.forEach(helper);
       return visibleCount > 0;
     },
   },

@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.3 (2023-08-22)
+
+### Fix
+
+* **Group:** Handle visibility for nested groups ([`a6ea27c`](https://github.com/Kitware/trame-simput/commit/a6ea27cb7faaa630d75eca6a79d2f8741a817af6))
+
 ## v2.3.2 (2023-05-24)
 ### Fix
 * **widgets:**  Apply layout information on columns instead of rows ([`2a6b964`](https://github.com/Kitware/trame-simput/commit/2a6b96476fbc0ff35bc4e2e85fdf6091ca62cf56))

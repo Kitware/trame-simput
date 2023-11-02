@@ -1,0 +1,108 @@
+<v-container fluid style="position: relative" v-show="shouldShow">
+  <div style="position: absolute; right: 10px; top: -1px; z-index: 1">
+    <v-btn v-if="help && size > 1" icon x-small @click="showHelp = !showHelp">
+      <v-icon small>mdi-lifebuoy</v-icon>
+    </v-btn>
+    <v-btn v-if="computedSizeControl" icon x-small @click="addEntry">
+      <v-icon small>mdi-plus-circle-outline</v-icon>
+    </v-btn>
+  </div>
+
+  <v-row>
+    <v-col v-if="label && size != 1" class="py-0">
+      <div class="text-caption text--secondary">{{ label }}</div>
+      <v-divider />
+      <div v-if="help && showHelp" class="text-caption text--secondary">
+        {{ help }}
+      </div>
+    </v-col>
+  </v-row>
+  <v-row v-if="model != null">
+    <v-col v-if="size == 1" class="pt-0 pb-1">
+      <v-row no-gutters class="align-center">
+        <v-col cols="9" class="text-truncate text--secondary">
+          {{ label }}
+        </v-col>
+        <v-col class="text-truncate text-right text-caption text--secondary">
+          {{ model }}
+        </v-col>
+        <v-btn v-if="help" icon x-small @click="showHelp = !showHelp">
+          <v-icon small>mdi-lifebuoy</v-icon>
+        </v-btn>
+      </v-row>
+      <v-slider
+        :name="`${data().type}:${name}:${i}`"
+        v-model="model"
+        @change="validate()"
+        hide-details
+        dense
+        :rules="[rule]"
+        :min="computedMin"
+        :max="computedMax"
+        :step="computedStep"
+        :disabled="disabled || !decorator.enable"
+        :readonly="readonly"
+      />
+      <div v-if="help && showHelp" class="mt-0 mb-2 text-caption text--secondary">
+        {{ help }}
+      </div>
+      <v-alert
+        v-for="hint, idx in hints"
+        :key="idx"
+        class="mb-1"
+        :type="levelToType(hint.level)"
+        border="left"
+        dense
+        :icon="levelToIcon(hint.level)"
+      >
+        {{ hint.message }}
+      </v-alert>
+    </v-col>
+    <v-col
+      class="py-1"
+      v-if="size != 1"
+      v-for="i in computedSize"
+      :key="i"
+      v-bind="getComponentProps(i-1)"
+    >
+      <v-row no-gutters class="align-center">
+        <v-slider
+          class="mt-0"
+          :name="`${data().type}:${name}:${i}`"
+          v-model="model[i - 1]"
+          @change="validate(i)"
+          hide-details
+          dense
+          :rules="[rule]"
+          :min="computedMin"
+          :max="computedMax"
+          :step="computedStep"
+          :disabled="disabled || !decorator.enable"
+          :readonly="readonly"
+        />
+        <div class="text-truncate text-right text-caption text--secondary" style="max-width: 60px;min-width: 60px;">{{ model[i - 1] }}</div>
+        <v-btn
+          v-if="computedSizeControl"
+          class="ml-2"
+          icon
+          x-small
+          @click="deleteEntry(i - 1)"
+          :disabled="!decorator.enable"
+        >
+          <v-icon>mdi-minus-circle-outline</v-icon>
+        </v-btn>
+      </v-row>
+      <v-alert
+        v-for="hint, idx in hints"
+        :key="idx"
+        class="mb-1"
+        :type="levelToType(hint.level)"
+        border="left"
+        dense
+        :icon="levelToIcon(hint.level)"
+      >
+        {{ hint.message }}
+      </v-alert>
+    </v-col>
+  </v-row>
+</v-container>

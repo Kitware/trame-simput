@@ -1,0 +1,31 @@
+{
+  "name": "vue3-trame_simput",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "build": "vite build",
+    "build:dev": "vite build --emptyOutDir --mode development",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore --ignore-pattern public"
+  },
+  "dependencies": {
+    "vue3-runtime-template": "1.0.2",
+    "vue": "^3.0.0",
+    "mitt": "3.0.1"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.1.4",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "eslint": "^8.33.0",
+    "eslint-plugin-vue": "^9.3.0",
+    "prettier": "^2.7.1",
+    "semantic-release": "19.0.2",
+    "vite": "^4.1.0",
+    "@vitejs/plugin-vue": "4.4.0"
+  },
+  "files": [
+    "dist/*",
+    "src/*",
+    "*.json",
+    "*.js"
+  ]
+}

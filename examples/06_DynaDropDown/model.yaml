@@ -1,0 +1,17 @@
+Item:
+  name:
+    _label: Basic input
+    _help: >-
+      This is a basic input
+    type: string
+    initial: 0
+  field:
+    _label: List
+    _help: >-
+      This is a dropdown
+    type: string
+    domains:
+    - name: List
+      type: ListDomain
+      ui_attributes: {}
+      widget: sw-select

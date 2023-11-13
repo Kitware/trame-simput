@@ -74,9 +74,15 @@ jobs:
         with:
           node-version: 14
 
-      - name: Build Vue Components
+      - name: Build Vue2 Components
         run: |
-          cd vue-components
+          cd vue2-components
+          npm ci
+          npm run build
+
+      - name: Build Vue3 Components
+        run: |
+          cd vue3-components
           npm ci
           npm run build
 
@@ -96,9 +102,15 @@ jobs:
         with:
           node-version: 14
 
-      - name: Build Vue Components
+      - name: Build Vue2 Components
         run: |
-          cd vue-components
+          cd vue2-components
+          npm ci
+          npm run build
+
+      - name: Build Vue3 Components
+        run: |
+          cd vue3-components
           npm ci
           npm run build
 

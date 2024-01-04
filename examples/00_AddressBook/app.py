@@ -1,7 +1,7 @@
 from pathlib import Path
 from trame.app import get_server
-from trame.ui.vuetify import SinglePageWithDrawerLayout
-from trame.widgets import vuetify, simput
+from trame.ui.vuetify3 import SinglePageWithDrawerLayout
+from trame.widgets import vuetify3 as vuetify, simput
 
 from trame_simput import get_simput_manager
 
@@ -109,8 +109,8 @@ with SinglePageWithDrawerLayout(server) as layout:
             items=(
                 "options",
                 [
-                    {"text": "English", "value": "en"},
-                    {"text": "Francais", "value": "fr"},
+                    {"title": "English", "value": "en"},
+                    {"title": "Francais", "value": "fr"},
                 ],
             ),
             **compact_styles,
@@ -119,7 +119,7 @@ with SinglePageWithDrawerLayout(server) as layout:
             classes="mx-2",
             v_model="abAutoApply",
             label="Apply",
-            **compact_styles,
+            **compact_styles, 
         )
         with vuetify.VBtn(
             **btn_styles,
@@ -154,20 +154,19 @@ with SinglePageWithDrawerLayout(server) as layout:
 
     with layout.drawer:
         with vuetify.VList(**compact_styles):
-            with vuetify.VListItemGroup(v_model="active_id", color="primary"):
+            with vuetify.VListGroup(v_model="active_id", color="primary"):
                 with vuetify.VListItem(
                     v_for="(id, i) in person_ids",
                     key="i",
                     value=("id",),
                 ):
-                    with vuetify.VListItemContent():
-                        with vuetify.VListItemTitle():
-                            simput.SimputItem(
-                                "{{FirstName}} {{LastName}}",
-                                item_id="id",
-                                no_ui=True,
-                                extract=["FirstName", "LastName"],
-                            )
+                    with vuetify.VListItemTitle():
+                        simput.SimputItem(
+                            "{{FirstName}} {{LastName}}",
+                            item_id="id",
+                            no_ui=True,
+                            extract=["FirstName", "LastName"],
+                        )
 
     with layout.content:
         with vuetify.VContainer(fluid=True):

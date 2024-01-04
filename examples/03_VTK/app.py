@@ -1,8 +1,8 @@
 from pathlib import Path
 
 from trame.app import get_server
-from trame.ui.vuetify import SinglePageWithDrawerLayout
-from trame.widgets import vuetify, simput, html, trame, vtk
+from trame.ui.vuetify3 import SinglePageWithDrawerLayout
+from trame.widgets import vuetify3 as vuetify, simput, html, trame, vtk
 
 from trame_simput import get_simput_manager
 
@@ -131,10 +131,11 @@ with SinglePageWithDrawerLayout(server) as layout:
             for icon in ICONS:
                 with vuetify.VTab():
                     vuetify.VIcon(icon)
-        with vuetify.VTabsItems(v_model=("drawer_mode", 0)):
-            with vuetify.VTabItem():
+
+        with vuetify.VWindow(v_model=("drawer_mode", 0), style="height: 100%;"):
+            with vuetify.VWindowItem(style="height: 100%;"):
                 with vuetify.VList(dense=True):
-                    with vuetify.VListItemGroup(
+                    with vuetify.VItemGroup(
                         v_model=("active_id", 0), color="primary"
                     ):
                         with vuetify.VListItem(
@@ -142,16 +143,15 @@ with SinglePageWithDrawerLayout(server) as layout:
                             key="i",
                             value=("id",),
                         ):
-                            with vuetify.VListItemContent():
-                                with vuetify.VListItemTitle():
-                                    simput.SimputItem(
-                                        "{{ data.name }}",
-                                        item_id="id",
-                                        no_ui=True,
-                                        v_slot="{ data }",
-                                    )
+                            with vuetify.VListItemTitle():
+                                simput.SimputItem(
+                                    "{{ data.name }}",
+                                    item_id="id",
+                                    no_ui=True,
+                                    v_slot="{ data }",
+                                )
 
-            with vuetify.VTabItem():
+            with vuetify.VWindowItem():
                 with vuetify.VCard():
                     with vuetify.VCardText():
                         with vuetify.VRow():
@@ -176,7 +176,7 @@ with SinglePageWithDrawerLayout(server) as layout:
                             "Create", click=(create_object, "[obj_name, obj_type]")
                         )
 
-            with vuetify.VTabItem():
+            with vuetify.VWindowItem():
                 simput.SimputItem(item_id="active_id")
 
     with layout.toolbar as toolbar:
@@ -192,7 +192,7 @@ with SinglePageWithDrawerLayout(server) as layout:
                     v_bind="attrs",
                     v_on="on",
                     icon=True,
-                    click="document.getElementById('importFile').click();",
+                    click="window.document.getElementById('importFile').click();",
                 ):
                     vuetify.VIcon("mdi-database-import-outline")
                     html.Input(

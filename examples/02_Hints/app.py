@@ -1,7 +1,7 @@
 from pathlib import Path
 from trame.app import get_server
-from trame.ui.vuetify import SinglePageLayout
-from trame.widgets import vuetify, simput
+from trame.ui.vuetify3 import SinglePageLayout
+from trame.widgets import vuetify3 as vuetify, simput
 
 from trame_simput import get_simput_manager
 
@@ -9,7 +9,7 @@ from trame_simput import get_simput_manager
 # Trame setup
 # -----------------------------------------------------------------------------
 
-server = get_server()
+server = get_server(client_type="vue3")
 state, ctrl = server.state, server.controller
 
 
@@ -30,7 +30,7 @@ pxm = simput_manager.proxymanager
 CHOICES = []
 for obj_type in pxm.types():
     item = pxm.create(obj_type)
-    CHOICES.append({"text": obj_type, "value": item.id})
+    CHOICES.append({"title": obj_type, "value": item.id})
 
 # -----------------------------------------------------------------------------
 # Simput container initialization

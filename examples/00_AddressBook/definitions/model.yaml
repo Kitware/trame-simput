@@ -33,107 +33,107 @@ Person:
     domains:
       - type: LabelList
         values:
-          - text: Alabama
+          - title: Alabama
             value: AL
-          - text: Alaska
+          - title: Alaska
             value: AK
-          - text: Arizona
+          - title: Arizona
             value: AZ
-          - text: Arkansas
+          - title: Arkansas
             value: AR
-          - text: California
+          - title: California
             value: CA
-          - text: Colorado
+          - title: Colorado
             value: CO
-          - text: Connecticut
+          - title: Connecticut
             value: CT
-          - text: Delaware
+          - title: Delaware
             value: DE
-          - text: Florida
+          - title: Florida
             value: FL
-          - text: Georgia
+          - title: Georgia
             value: GA
-          - text: Hawaii
+          - title: Hawaii
             value: HI
-          - text: Idaho
+          - title: Idaho
             value: ID
-          - text: Illinois
+          - title: Illinois
             value: IL
-          - text: Indiana
+          - title: Indiana
             value: IN
-          - text: Iowa
+          - title: Iowa
             value: IA
-          - text: Kansas
+          - title: Kansas
             value: KS
-          - text: Kentucky
+          - title: Kentucky
             value: KY
-          - text: Louisiana
+          - title: Louisiana
             value: LA
-          - text: Maine
+          - title: Maine
             value: ME
-          - text: Maryland
+          - title: Maryland
             value: MD
-          - text: Massachusetts
+          - title: Massachusetts
             value: MA
-          - text: Michigan
+          - title: Michigan
             value: MI
-          - text: Minnesota
+          - title: Minnesota
             value: MN
-          - text: Mississippi
+          - title: Mississippi
             value: MS
-          - text: Missouri
+          - title: Missouri
             value: MO
-          - text: Montana
+          - title: Montana
             value: MT
-          - text: Nebraska
+          - title: Nebraska
             value: NE
-          - text: Nevada
+          - title: Nevada
             value: NV
-          - text: New Hampshire
+          - title: New Hampshire
             value: NH
-          - text: New Jersey
+          - title: New Jersey
             value: NJ
-          - text: New Mexico
+          - title: New Mexico
             value: NM
-          - text: New York
+          - title: New York
             value: NY
-          - text: North Carolina
+          - title: North Carolina
             value: NC
-          - text: North Dakota
+          - title: North Dakota
             value: ND
-          - text: Ohio
+          - title: Ohio
             value: OH
-          - text: Oklahoma
+          - title: Oklahoma
             value: OK
-          - text: Oregon
+          - title: Oregon
             value: OR
-          - text: Pennsylvania
+          - title: Pennsylvania
             value: PA
-          - text: Rhode Island
+          - title: Rhode Island
             value: RI
-          - text: South Carolina
+          - title: South Carolina
             value: SC
-          - text: South Dakota
+          - title: South Dakota
             value: SD
-          - text: Tennessee
+          - title: Tennessee
             value: TN
-          - text: Texas
+          - title: Texas
             value: TX
-          - text: Utah
+          - title: Utah
             value: UT
-          - text: Vermont
+          - title: Vermont
             value: VT
-          - text: Virginia
+          - title: Virginia
             value: VA
-          - text: Washington
+          - title: Washington
             value: WA
-          - text: West Virginia
+          - title: West Virginia
             value: WV
-          - text: Wisconsin
+          - title: Wisconsin
             value: WI
-          - text: Wyoming
+          - title: Wyoming
             value: WY
-          - text: Not Applicable
+          - title: Not Applicable
             value: N/A
   ZipCode:
     _label: Zip Code

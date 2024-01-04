@@ -1,7 +1,7 @@
 from pathlib import Path
 from trame.app import get_server
-from trame.ui.vuetify import SinglePageLayout
-from trame.widgets import vuetify, simput, html
+from trame.ui.vuetify3 import SinglePageLayout
+from trame.widgets import vuetify3 as vuetify, simput, html
 from trame.decorators import TrameApp
 
 from trame_simput import get_simput_manager
@@ -22,7 +22,7 @@ class ListDomain(PropertyDomain):
 class App:
     def __init__(self, server=None):
         global PROXY_FIELDS
-        self.server = get_server(server, client_type="vue2")
+        self.server = get_server(server, client_type="vue3")
         register_property_domain("ListDomain", ListDomain)
 
         # Simput

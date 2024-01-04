@@ -2,6 +2,21 @@
 
 <!--next-version-placeholder-->
 
+## v2.4.0 (2024-01-04)
+
+### Feature
+
+* **vue3:** Add vue3/vuetify3 support ([`e5ab046`](https://github.com/Kitware/trame-simput/commit/e5ab0465797d329b7c4cb846b9a4ac400914a070))
+
+### Fix
+
+* **vue3:** Update examples to work with vuetify 3 ([`222f2c3`](https://github.com/Kitware/trame-simput/commit/222f2c3c5165cfb6efad4e3a5eaa00d00e14821d))
+* **widgets:** Slider v-alert and template fix ([`e198720`](https://github.com/Kitware/trame-simput/commit/e198720ae8e05d03fca0b690d0ad3986bc4a580e))
+
+### Documentation
+
+* **example:** Add dyna drop down ([`083c052`](https://github.com/Kitware/trame-simput/commit/083c0525b9219dce16a42c0c51b2f58d715f71cc))
+
 ## v2.3.3 (2023-08-22)
 
 ### Fix

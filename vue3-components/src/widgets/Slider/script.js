@@ -111,7 +111,7 @@ export default {
         return properties() && properties()[props.name];
       },
       set(v) {
-        this.properties()[props.name] = v;
+        properties()[props.name] = v;
       },
     });
 
@@ -280,6 +280,7 @@ export default {
       computedSizeControl,
       showHelp,
       data,
+      decorator,
       rule,
       hints,
       shouldShow,

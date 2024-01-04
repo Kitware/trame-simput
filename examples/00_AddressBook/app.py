@@ -119,7 +119,7 @@ with SinglePageWithDrawerLayout(server) as layout:
             classes="mx-2",
             v_model="abAutoApply",
             label="Apply",
-            **compact_styles, 
+            **compact_styles,
         )
         with vuetify.VBtn(
             **btn_styles,

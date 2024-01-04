@@ -135,9 +135,7 @@ with SinglePageWithDrawerLayout(server) as layout:
         with vuetify.VWindow(v_model=("drawer_mode", 0), style="height: 100%;"):
             with vuetify.VWindowItem(style="height: 100%;"):
                 with vuetify.VList(dense=True):
-                    with vuetify.VItemGroup(
-                        v_model=("active_id", 0), color="primary"
-                    ):
+                    with vuetify.VItemGroup(v_model=("active_id", 0), color="primary"):
                         with vuetify.VListItem(
                             v_for="(id, i) in source_ids",
                             key="i",

@@ -33,7 +33,7 @@
       <v-slider
         :name="`${data().type}:${name}:${i}`"
         v-model="model"
-        @change="validate()"
+        @update:modelValue="validate()"
         hide-details
         dense
         :rules="[rule]"
@@ -51,12 +51,9 @@
         :key="idx"
         class="mb-1"
         :type="levelToType(hint.level)"
-        border="left"
         dense
-        :icon="levelToIcon(hint.level)"
-      >
-        {{ hint.message }}
-      </v-alert>
+        :text="hint.message"
+      />
     </v-col>
     <v-col
       class="py-1"
@@ -70,7 +67,7 @@
           class="mt-0"
           :name="`${data().type}:${name}:${i}`"
           v-model="model[i - 1]"
-          @change="validate(i)"
+          @update:modelValue="validate(i)"
           hide-details
           dense
           :rules="[rule]"
@@ -97,12 +94,9 @@
         :key="idx"
         class="mb-1"
         :type="levelToType(hint.level)"
-        border="left"
         dense
-        :icon="levelToIcon(hint.level)"
-      >
-        {{ hint.message }}
-      </v-alert>
+        :text="hint.message"
+      />
     </v-col>
   </v-row>
 </v-container>

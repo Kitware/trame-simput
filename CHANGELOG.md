@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.4.1 (2024-01-05)
+
+### Fix
+
+* **vue3:** Remove console logging ([#19](https://github.com/Kitware/trame-simput/issues/19)) ([`d7cb238`](https://github.com/Kitware/trame-simput/commit/d7cb2385424cea0351f32168d53fa09a6705201a))
+
 ## v2.4.0 (2024-01-04)
 
 ### Feature

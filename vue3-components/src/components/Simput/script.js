@@ -24,11 +24,6 @@ export default {
   setup(props, { emit }) {
     const trame = inject("trame");
 
-    console.log({
-      trame,
-      props,
-    });
-
     const manager = ref(null);
     const managerId = ref(null);
 
@@ -54,25 +49,18 @@ export default {
         manager.value.disconnectBus(simputChannel);
       }
 
-      console.log("Simput - updateManager");
-
       managerId.value = trame.state.get(`${props.namespace}Id`);
-      console.log({
-        managerId: managerId.value,
-      });
+
       manager.value = getSimputManager(
         managerId.value,
         props.namespace,
         client.value
       );
-      console.log({
-        manager: manager.value,
-      });
+
       manager.value.connectBus(simputChannel);
     };
 
     onMounted(() => {
-      console.log("Simput - onMounted");
       updateManager();
     });
 

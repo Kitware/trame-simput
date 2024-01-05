@@ -36,28 +36,14 @@ export default {
 
     const update = function update() {
       if (proxyId.value && getSimput()) {
-        console.log("SimputItem - update");
-        console.log({
-          proxyId: proxyId.value,
-        });
         data.value = getSimput().getData(proxyId.value);
         domains.value = getSimput().getDomains(proxyId.value);
 
-        console.log({
-          data: data.value,
-          domains: domains.value,
-          computedType: computedType.value,
-        });
-
         if (computedType.value) {
           ui.value = getSimput().getUI(computedType.value);
-          console.log({
-            ui: ui.value,
-          });
         }
         simputChannel.pushQuery();
       } else {
-        console.log("SimputItem - update: reset data and ui")
         data.value = null;
         ui.value = null;
       }
@@ -70,13 +56,8 @@ export default {
     const onChange = function onChange({ id, type }) {
       /* eslint-disable eqeqeq */
       if (id && proxyId.value == id) {
-        console.log("SimputItem - onChange");
         data.value = getSimput().getData(id);
         domains.value = getSimput().getDomains(id);
-        console.log({
-          data: data.value,
-          domains: domains.value,
-        });
       }
       if (type && computedType.value === type) {
         ui.value = getSimput().getUI(computedType.value);
@@ -84,31 +65,18 @@ export default {
       if (!type && computedType.value && !ui.value) {
         ui.value = getSimput().getUI(computedType.value);
       }
-      console.log({
-        ui: ui.value,
-      });
     };
 
     const onReload = function onReload(name) {
-      console.log("SimputItem - onReload");
       if (name === "data") {
         data.value = getSimput().getData(proxyId.value, true);
-        console.log({
-          data: data.value,
-        });
       }
       if (name === "ui") {
         ui.value = getSimput().getUI(proxyId.value, true);
-        console.log({
-          ui: ui.value,
-        });
       }
       if (name === "domain") {
         getSimput().resetDomains();
         domains.value = getSimput().getDomains(proxyId.value, true);
-        console.log({
-          domains: domains.value,
-        });
       }
     };
 
@@ -116,7 +84,6 @@ export default {
       simputChannel.$on("connect", onConnect);
       simputChannel.$on("change", onChange);
       simputChannel.$on("reload", onReload);
-      console.log("SimputItem - onMounted");
       update();
     });
 

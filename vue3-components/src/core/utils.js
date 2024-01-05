@@ -299,13 +299,12 @@ export class DataManager {
     if ((!data || forceFetch) && !this.pendingData[id]) {
       // console.log(' > fetch data', id, forceFetch);
       this.pendingData[id] = true;
-      console.log("utils.js - triggering SimputFetch");
+
       this.wsClient
         .getRemote()
         .Trame.trigger(`${this.namespace}Fetch`, [], { id });
     }
-    console.log("utils.js - return");
-    console.log({ data });
+
     return data;
   }
 

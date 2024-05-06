@@ -1,11 +1,7 @@
 <v-container fluid style="position: relative" v-show="shouldShow">
   <div style="position: absolute; right: 10px; top: -1px; z-index: 1">
-    <v-btn v-if="help && size > 1" icon x-small @click="showHelp = !showHelp">
-      <v-icon small>mdi-lifebuoy</v-icon>
-    </v-btn>
-    <v-btn v-if="computedSizeControl" icon x-small @click="addEntry">
-      <v-icon small>mdi-plus-circle-outline</v-icon>
-    </v-btn>
+    <v-btn v-if="help && size > 1" icon="mdi-lifebuoy" size="x-small" @click="showHelp = !showHelp" />
+    <v-btn v-if="computedSizeControl" icon="mdi-plus-circle-outline" size="x-small" @click="addEntry" />
   </div>
 
   <v-row>
@@ -26,16 +22,14 @@
         <v-col class="text-truncate text-right text-caption text--secondary">
           {{ model }}
         </v-col>
-        <v-btn v-if="help" icon x-small @click="showHelp = !showHelp">
-          <v-icon small>mdi-lifebuoy</v-icon>
-        </v-btn>
+        <v-btn v-if="help" icon="mdi-lifebuoy" size="x-small" @click="showHelp = !showHelp" />
       </v-row>
       <v-slider
         :name="`${data().type}:${name}:${i}`"
         v-model="model"
         @update:modelValue="validate()"
         hide-details
-        dense
+        density="compact"
         :rules="[rule]"
         :min="computedMin"
         :max="computedMax"
@@ -51,7 +45,7 @@
         :key="idx"
         class="mb-1"
         :type="levelToType(hint.level)"
-        dense
+        density="compact"
         :text="hint.message"
       />
     </v-col>
@@ -69,7 +63,7 @@
           v-model="model[i - 1]"
           @update:modelValue="validate(i)"
           hide-details
-          dense
+          density="compact"
           :rules="[rule]"
           :min="computedMin"
           :max="computedMax"
@@ -94,7 +88,7 @@
         :key="idx"
         class="mb-1"
         :type="levelToType(hint.level)"
-        dense
+        density="compact"
         :text="hint.message"
       />
     </v-col>

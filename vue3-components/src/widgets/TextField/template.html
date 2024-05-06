@@ -24,12 +24,12 @@
     <v-col v-if="size == 1" class="pt-0 pb-1">
       <v-text-field
         :name="`${data().type}:${name}:${i}`"
-        :background-color="color()"
+        :bg-color="color()"
         v-model="model"
-        @input="update()"
+        @update:modelValue="update()"
         :label="label"
         :hint="help"
-        dens
+        density="compact"
         :rules="[rule]"
         @blur="validate()"
         @keydown.enter="validate()"
@@ -54,12 +54,12 @@
         <v-text-field
           class="mt-0"
           :name="`${data().type}:${name}:${i}`"
-          :background-color="color(i)"
+          :bg-color="color(i)"
           v-model="model[i - 1]"
-          @input="update(i)"
-          dense
+          @update:modelValue="update(i)"
+          density="compact"
           :rules="[rule]"
-          @blur="validate(i)"
+          @update:focused="validate(i)"
           @keydown.enter="validate(i)"
           hide-details
 
@@ -86,9 +86,8 @@
       :key="idx"
       class="mb-1"
       :type="levelToType(hint.level)"
-      border="left"
-      dense
-      :icon="levelToIcon(hint.level)"
+      border="start"
+      density="compact"
     >
       {{ hint.message }}
     </v-alert>

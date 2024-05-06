@@ -44,10 +44,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    "row-height": {
-      type: Boolean,
-      default: false,
-    },
     rows: {
       type: [String, Number],
       default: 5,

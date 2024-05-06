@@ -1,5 +1,6 @@
 <v-textarea
   v-show="decorator.show"
+  density="compact"
 
   :label="label"
   :hint="help"
@@ -11,7 +12,6 @@
   :clearable="clearable"
   :readonly="readonly"
   :no-resize="no-resize"
-  :row-height="row-height"
   :rows="rows"
 
   :disabled="disabled || !decorator.enable"

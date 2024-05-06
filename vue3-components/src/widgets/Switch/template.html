@@ -5,8 +5,8 @@
       :label="label"
       :hint="help"
       v-model="model"
-      @change="validate"
-      dense
+      @update:modelValue="validate"
+      density="compact"
       hide-details
       :disabled="disabled || !decorator.enable"
       :readonly="readonly"
@@ -14,13 +14,11 @@
     <v-spacer />
     <v-btn
       v-if="help"
-      icon
-      x-small
+      icon="mdi-lifebuoy"
+      size="x-small"
       style="position: absolute; right: 0;"
       @click="showHelp = !showHelp"
-    >
-      <v-icon small>mdi-lifebuoy</v-icon>
-    </v-btn>
+    />
   </v-row>
   <v-row v-if="help && showHelp" class="ma-0 text-caption text--secondary">
     {{ help }}

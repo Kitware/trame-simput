@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v2.4.2 (2024-05-06)
+
+### Fix
+
+* **examples:** 00_AddressBook ([`072c1f1`](https://github.com/Kitware/trame-simput/commit/072c1f1d2638164813075c3be1392357a7e3f6ea))
+* **vue3:** Vuetify v3 templates ([`546571b`](https://github.com/Kitware/trame-simput/commit/546571b68a6633d65df68598e08996c1cb56b28d))
+
 ## v2.4.1 (2024-01-05)
 
 ### Fix

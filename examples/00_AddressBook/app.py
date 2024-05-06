@@ -9,7 +9,7 @@ from trame_simput import get_simput_manager
 # Trame setup
 # -----------------------------------------------------------------------------
 
-server = get_server()
+server = get_server(client_type="vue3")
 state, ctrl = server.state, server.controller
 
 # -----------------------------------------------------------------------------
@@ -58,12 +58,15 @@ class AddressBook:
             self.update_state()
 
     def update_state(self, active_id=None):
-        self._state.active_id = active_id
+        if active_id:
+            self._state.active_ids = [active_id]
+        else:
+            self._state.active_ids = []
         self._state.person_ids = self.entry_ids
 
     @property
     def active_id(self):
-        return self._state.active_id
+        return self._state.active_ids[0] if len(self._state.active_ids) > 0 else None
 
     @property
     def entry_ids(self):
@@ -76,14 +79,13 @@ class AddressBook:
 
 btn_styles = {
     "classes": "mx-2",
-    "small": True,
-    "outlined": True,
-    "icon": True,
+    "size": "small",
+    "variant": "outlined",
 }
 
 compact_styles = {
     "hide_details": True,
-    "dense": True,
+    "density": "compact",
 }
 
 # -----------------------------------------------------------------------------
@@ -118,7 +120,8 @@ with SinglePageWithDrawerLayout(server) as layout:
         vuetify.VSwitch(
             classes="mx-2",
             v_model="abAutoApply",
-            label="Apply",
+            color="primary",
+            label="Auto apply",
             **compact_styles,
         )
         with vuetify.VBtn(
@@ -128,49 +131,51 @@ with SinglePageWithDrawerLayout(server) as layout:
         ):
             with vuetify.VBadge(
                 content=["abChangeSet"],
-                offset_x=8,
-                offset_y=8,
-                value=["abChangeSet"],
+                model_value=["abChangeSet"],
             ):
-                vuetify.VIcon("mdi-database-import")
+                vuetify.VIcon("mdi-database-import", size="x-large")
 
-        with vuetify.VBtn(
+        vuetify.VBtn(
             **btn_styles,
             disabled=["!abChangeSet"],
             click=ctrl.simput_reset,
-        ):
-            vuetify.VIcon("mdi-undo-variant")
+            icon="mdi-undo-variant",
+        )
 
         vuetify.VDivider(vertical=True, classes="mx-2")
-        with vuetify.VBtn(
+        vuetify.VBtn(
             **btn_styles,
-            disabled=("!active_id",),
+            disabled=("active_ids.length === 0",),
             click=ctrl.address_book_remove,
-        ):
-            vuetify.VIcon("mdi-minus")
+            icon="mdi-minus",
+        )
 
-        with vuetify.VBtn(click=ctrl.address_book_add, **btn_styles):
-            vuetify.VIcon("mdi-plus")
+        vuetify.VBtn(click=ctrl.address_book_add, **btn_styles, icon="mdi-plus")
 
     with layout.drawer:
-        with vuetify.VList(**compact_styles):
-            with vuetify.VListGroup(v_model="active_id", color="primary"):
-                with vuetify.VListItem(
-                    v_for="(id, i) in person_ids",
-                    key="i",
-                    value=("id",),
-                ):
-                    with vuetify.VListItemTitle():
-                        simput.SimputItem(
-                            "{{FirstName}} {{LastName}}",
-                            item_id="id",
-                            no_ui=True,
-                            extract=["FirstName", "LastName"],
-                        )
+        with vuetify.VList(
+            density="compact",
+            select_strategy="single-leaf",
+            selected=("active_ids",),
+            update_selected="active_ids = $event",
+            color="primary",
+        ):
+            with vuetify.VListItem(
+                v_for="(id, i) in person_ids",
+                key="i",
+                value=("id",),
+            ):
+                with vuetify.VListItemTitle():
+                    simput.SimputItem(
+                        "{{FirstName}} {{LastName}}",
+                        item_id="id",
+                        no_ui=True,
+                        extract=["FirstName", "LastName"],
+                    )
 
     with layout.content:
         with vuetify.VContainer(fluid=True):
-            simput.SimputItem(item_id=("active_id", None))
+            simput.SimputItem(item_id=("active_ids[0]", None))
 
 
 # -----------------------------------------------------------------------------

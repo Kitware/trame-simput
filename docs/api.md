@@ -65,7 +65,10 @@ def save(self, file_output=None):
     """Export state (definition+data) into a file"""
 
 def load(self, file_input=None, file_content=None):
-    """Load previously exported state from a file"""
+    """
+    Load previously exported state from a file.
+    Return the proxy id remap which is a dict with proxy id's found in the provided state as keys and the corresponding freshly created proxy id's as values.
+    """
 ```
 
 __Commit / Reset__

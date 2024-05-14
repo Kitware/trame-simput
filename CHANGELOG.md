@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.4.3 (2024-05-14)
+
+### Fix
+
+* **proxy:** Make ProxyManager.load return _id_remap ([`175d92d`](https://github.com/Kitware/trame-simput/commit/175d92d7366b677a2c6fe25a727e9aa9a3ef4ac7))
+
 ## v2.4.2 (2024-05-06)
 
 ### Fix

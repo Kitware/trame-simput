@@ -220,8 +220,12 @@ class Proxy:
         prop_type = definition.get("type", "string")
         safe_value = value
         if value is not None:
-            if prop_type == "proxy" and not isinstance(value, str):
-                safe_value = value.id
+            if prop_type == "proxy":
+                if isinstance(value, list):
+                    if len(value) > 0 and not isinstance(value[0], str):
+                        safe_value = [val.id for val in value]
+                elif not isinstance(value, str):
+                    safe_value = value.id
 
         # check if change
         change_detected = False
@@ -253,6 +257,8 @@ class Proxy:
         """Return a property value"""
         value = self._properties.get(name, default)
         if "proxy" == self.definition.get(name).get("type"):
+            if isinstance(value, list):
+                return [self._proxy_manager.get(proxy_id) for proxy_id in value]
             return self._proxy_manager.get(self._properties.get(name))
 
         return value
@@ -321,10 +327,7 @@ class Proxy:
         """value = proxy[prop_name]"""
 
         if self._properties and name in self._properties:
-            if "proxy" == self.definition.get(name).get("type"):
-                return self._proxy_manager.get(self._properties.get(name))
-
-            return self._properties[name]
+            return self.get_property(name)
 
         logger.error("Proxy[%s] not found", name)
 

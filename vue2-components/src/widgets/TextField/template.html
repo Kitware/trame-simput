@@ -20,7 +20,7 @@
       </div>
     </v-col>
   </v-row>
-  <v-row>
+  <v-row v-if="type != 'proxy'">
     <v-col v-if="size == 1" class="pt-0 pb-1">
       <v-text-field
         :name="`${data().type}:${name}:${i}`"

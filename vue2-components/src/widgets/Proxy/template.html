@@ -1,1 +1,24 @@
-<SimputInput :itemId="itemId" v-show="decorator.show" />
+<template v-if="size==1">
+    <SimputInput :itemId="itemId" v-show="decorator.show" />
+</template>
+<template v-else>
+    <v-col>
+        <v-row
+            class="py-1"
+            v-for="i in computedSize"
+            :key="i"
+            v-bind="getComponentProps(i-1)"
+        >
+            <SimputInput :itemId="itemId[i-1]" v-show="decorator.show" />
+            <v-btn
+                v-if="computedSizeControl"
+                class="ml-2"
+                icon
+                x-small
+                @click="deleteEntry(i - 1)"
+            >
+                <v-icon>mdi-minus-circle-outline</v-icon>
+            </v-btn>
+        </v-row>
+    </v-col>
+</template>

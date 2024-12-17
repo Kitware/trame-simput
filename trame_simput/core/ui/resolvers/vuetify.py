@@ -38,11 +38,12 @@ class VuetifyResolver:
         self._labels = None
 
     def get_widget(self, elem):
-        attributes = {}
+        model = self._model.get(elem.get("name"), {})
+        attributes = {key: model[key] for key in model if not key.startswith("_")}
         if elem.tag in VUETIFY_MAP:
             return VUETIFY_MAP[elem.tag], attributes
         elif elem.tag == "input":
-            domains = self._model.get(elem.get("name"), {}).get("domains", [])
+            domains = model.get("domains", [])
             widget = "sw-text-field"
             for domain in domains:
                 ctype = domain.get("type")

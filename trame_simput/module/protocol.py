@@ -33,6 +33,12 @@ class SimputProtocol(LinkProtocol):
         logger.info("reset_cache")
         self.net_cache_domains = {}
 
+    @exportRpc("simput.create_proxy")
+    def test(self, manager_id, proxy_type):
+        pxm = get_simput_manager(manager_id).proxymanager
+        proxy = pxm.create(proxy_type)
+        return proxy.id
+
     @exportRpc("simput.push")
     def push(self, manager_id, id=None, type=None):
         logger.info("push")

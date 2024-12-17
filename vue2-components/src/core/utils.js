@@ -333,3 +333,29 @@ export function getSimputManager(id, namespace, client) {
   MANAGERS[id] = manager;
   return manager;
 }
+
+export function getComponentProps(layout, index) {
+  if (layout === 'vertical') {
+    return { cols: 12 };
+  }
+  if (layout === 'l2') {
+    return { cols: 6 };
+  }
+  if (layout === 'l3') {
+    return { cols: 4 };
+  }
+  if (layout === 'l4') {
+    return { cols: 3 };
+  }
+  if (layout === 'm3-half') {
+    const props = { cols: 4 };
+    if (index === 3) {
+      props.offset = 4;
+    }
+    if (index === 5) {
+      props.offset = 8;
+    }
+    return props;
+  }
+  return {};
+}

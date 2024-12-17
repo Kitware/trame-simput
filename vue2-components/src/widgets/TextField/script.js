@@ -1,4 +1,4 @@
-import { COMPUTED } from '../../core/utils';
+import { COMPUTED, getComponentProps } from '../../core/utils';
 
 // Layouts: horizontal, vertical, l2, l3, l4
 export default {
@@ -51,6 +51,9 @@ export default {
     readonly: {
       type: Boolean,
       default: false,
+    },
+    proxyType: {
+      type: String,
     },
   },
   data() {
@@ -143,14 +146,28 @@ export default {
       if (!this.model) {
         this.model = [];
       }
-      this.dynamicSize = this.model.length + 1;
-      this.model.length = this.dynamicSize;
-
-      if (this.newValue === 'null') {
-        this.model[this.model.length - 1] = null;
-      } else if (this.newValue === 'same') {
-        this.model[this.model.length - 1] = this.model[this.model.length - 2];
+      if (this.type == 'proxy') {
+        this.getSimput()
+          .wsClient.getConnection()
+          .getSession()
+          .call('simput.create_proxy', [
+            this.simputChannel.managerId,
+            this.proxyType,
+          ])
+          .then((proxy_id) => {
+            if (proxy_id != undefined) {
+              this.model.push(proxy_id);
+              this.dirty(this.name);
+            }
+          });
+      } else {
+        if (this.newValue === 'null') {
+          this.model.push(null);
+        } else if (this.newValue === 'same') {
+          this.model.push(this.model[this.model.length - 2]);
+        }
       }
+      this.dynamicSize = this.model.length;
 
       this.validate(this.dynamicSize);
     },
@@ -159,29 +176,7 @@ export default {
       this.dirty(this.name);
     },
     getComponentProps(index) {
-      if (this.computedLayout === 'vertical') {
-        return { cols: 12 };
-      }
-      if (this.computedLayout === 'l2') {
-        return { cols: 6 };
-      }
-      if (this.computedLayout === 'l3') {
-        return { cols: 4 };
-      }
-      if (this.computedLayout === 'l4') {
-        return { cols: 3 };
-      }
-      if (this.computedLayout === 'm3-half') {
-        const props = { cols: 4 };
-        if (index === 3) {
-          props.offset = 4;
-        }
-        if (index === 5) {
-          props.offset = 8;
-        }
-        return props;
-      }
-      return {};
+      return getComponentProps(this.computedLayout, index);
     },
     color(component = 0) {
       if (

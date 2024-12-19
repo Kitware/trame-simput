@@ -1,0 +1,20 @@
+<layouts>
+    <ui id="AddressBook">
+        <col>
+            <row>
+                <input name="Persons" sizeControl="true" />
+            </row>
+            <row>
+                <proxy name="Persons" sizeControl="true" />
+            </row>
+        </col>
+    </ui>
+    <ui id="Person">
+        <col>
+            <row>
+                <input name="FirstName" />
+                <input name="LastName" />
+            </row>
+        </col>
+    </ui>
+</layouts>

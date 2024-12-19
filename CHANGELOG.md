@@ -2,6 +2,21 @@
 
 <!--next-version-placeholder-->
 
+## v2.5.0 (2024-12-19)
+
+### Feature
+
+* **proxy-list:** Add proxy-list example ([`b941b28`](https://github.com/Kitware/trame-simput/commit/b941b282cd3b8bc230c0b169eb0fa72c8a5507a9))
+* **simput:** Add support for proxy lists ([`32bc46c`](https://github.com/Kitware/trame-simput/commit/32bc46cb0a3ca746ab0db06b3018a43b9b1316fa))
+
+### Fix
+
+* **proxy-list:** Fix empty proxy list bug ([`e99f8db`](https://github.com/Kitware/trame-simput/commit/e99f8dbebda5d0fbdedb019e9b820638875be823))
+
+### Documentation
+
+* **proxy-list:** Add proxy-list documentation ([`404311a`](https://github.com/Kitware/trame-simput/commit/404311a528554e55f3c60c84d68a51941c627cf1))
+
 ## v2.4.3 (2024-05-14)
 
 ### Fix

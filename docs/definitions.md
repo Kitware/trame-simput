@@ -51,6 +51,10 @@ The __YAML__ structure follow the given hierarchy:
    2. Property name: Unique string within current proxy representing an entry in your data model.
       1. Property caracteristics:
          1. size: How many values should be stored for that property. Skipping size attribute will imply a size of 1.
+            If size is superior to 1, or set to -1, the property will be interpreted as a list.
+            If size is set to -1, the size is dynamic, otherwise it is fixed.
+            For vue3, only lists of primitive types (uint, int, float, bool, string) are supported.
+            For vue2, proxy lists are also supported. `proxyType` must then be set to define the type of proxy listed
          2. type: What kind of values that property is holding.
             1. uint(8,16,32,64): Unsigned integer encoded on 8, 16, 32, 64 bytes.
             2. int(8,16,32,64): Signed integer encoded on 8, 16, 32, 64 bytes.

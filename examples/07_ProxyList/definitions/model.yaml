@@ -1,0 +1,17 @@
+Person:
+  _label: Personal Informations
+  FirstName:
+    _label: First Name
+    type: string
+    initial: John
+  LastName:
+    _label: Last Name
+    type: string
+    initial: Doe
+
+AddressBook:
+  Persons:
+    type: proxy
+    size: -1
+    initial: []
+    proxyType: Person

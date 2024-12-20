@@ -74,6 +74,7 @@ The __YAML__ structure follow the given hierarchy:
                1. type: Name of the domain class
                2. name: (optional) identifier when we don't want to use its `type` as identifier.
                3. **: additional parameters specific to domain type expectation.
+         2. proxyType: Name of proxy used in proxy lists
 
 # Domain definitions
 

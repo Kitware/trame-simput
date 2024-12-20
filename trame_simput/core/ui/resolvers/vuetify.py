@@ -39,7 +39,7 @@ class VuetifyResolver:
 
     def get_widget(self, elem):
         model = self._model.get(elem.get("name"), {})
-        attributes = {key: model[key] for key in model if not key.startswith("_")}
+        attributes = {}
         if elem.tag in VUETIFY_MAP:
             return VUETIFY_MAP[elem.tag], attributes
         elif elem.tag == "input":
@@ -79,6 +79,10 @@ class VuetifyResolver:
 
             if self._model.get(elem.get("name"), {}).get("type", "string") == "bool":
                 widget = "sw-switch"
+
+            proxy_type = model.get("proxyType", None)
+            if proxy_type is not None:
+                attributes["proxyType"] = proxy_type
 
             return widget, attributes
         elif elem.tag == "proxy":

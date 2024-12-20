@@ -146,8 +146,6 @@ export default {
       if (!this.model) {
         this.model = [];
       }
-      this.dynamicSize = this.model.length + 1;
-      this.model.length = this.dynamicSize;
       if (this.type == 'proxy') {
         this.getSimput()
           .wsClient.getConnection()
@@ -158,16 +156,19 @@ export default {
           ])
           .then((proxy_id) => {
             if (proxy_id != undefined) {
-              this.model[this.dynamicSize - 1] = proxy_id;
-              this.validate(this.dynamicSize);
+              this.model.push(proxy_id);
+              this.dirty(this.name);
             }
+            this.dynamicSize = this.model.length;
+            this.validate(this.dynamicSize);
           });
       } else {
         if (this.newValue === 'null') {
-          this.model[this.dynamicSize - 1] = null;
+          this.model.push(null);
         } else if (this.newValue === 'same') {
-          this.model[this.dynamicSize - 1] = this.model[this.dynamicSize - 2];
+          this.model.push(this.model[this.model.length - 2]);
         }
+        this.dynamicSize = this.model.length;
         this.validate(this.dynamicSize);
       }
     },

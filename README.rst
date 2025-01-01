@@ -1,5 +1,7 @@
+.. |pypi_download| image:: https://img.shields.io/pypi/dm/trame-simput
+
 ===========================================================
-trame-simput
+trame-simput |pypi_download|
 ===========================================================
 
 Python package that let you create web forms/ui using Trame.

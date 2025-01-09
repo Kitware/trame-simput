@@ -76,8 +76,10 @@ export default {
       return getComponentProps(this.computedLayout, index);
     },
     deleteEntry(index) {
-      this.model.splice(index, 1);
-      this.dirty(this.name);
+      if (this.computedSize > Number(this.size)) {
+        this.model.splice(index, 1);
+        this.dirty(this.name);
+      }
     },
   },
   inject: ['data', 'properties', 'domains', 'dirty'],

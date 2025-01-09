@@ -714,6 +714,7 @@ class ProxyManager:
         before_delete = set(self._id_map.keys())
         # Delete ourself
         proxy_to_delete: Proxy = self._id_map[proxy_id]
+        self.clean_proxy_domains(proxy_to_delete.id)
         del self._id_map[proxy_id]
 
         for tag in proxy_to_delete.tags:

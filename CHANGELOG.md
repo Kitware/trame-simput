@@ -2,6 +2,21 @@
 
 <!--next-version-placeholder-->
 
+## v2.5.1 (2025-01-09)
+
+### Fix
+
+* **proxy-list:** Limit minimum proxy list size ([`2ae1cdb`](https://github.com/Kitware/trame-simput/commit/2ae1cdb350e1de51e3d4e3f180414b0d92232946))
+* **proxy:** Clean dirty proxy domains before deletion ([`ef9033b`](https://github.com/Kitware/trame-simput/commit/ef9033b8c69b724af49c3c9b382131b703022934))
+* **proxy-list:** Initialize empty proxy lists ([`ce10a93`](https://github.com/Kitware/trame-simput/commit/ce10a931dcf34aefeb3d29e79e692c7872959f85))
+* **pypi:** Rename package to trame_simput ([`47d76e1`](https://github.com/Kitware/trame-simput/commit/47d76e14e84daa2e76445e9301ab32fc4078d517))
+* **vuetify:** Set proxyType as explicit property ([`fb02f80`](https://github.com/Kitware/trame-simput/commit/fb02f802e17ec159117f839f5f18e376468c71e6))
+* **proxy-list:** Fix invalid last added proxy ([`44165ff`](https://github.com/Kitware/trame-simput/commit/44165ff1aae1c0285e535ebe3e2119ade9df073e))
+
+### Documentation
+
+* Update README.rst ([`5c651dd`](https://github.com/Kitware/trame-simput/commit/5c651ddf6ba786394ed003a08b38ae7caad701bd))
+
 ## v2.5.0 (2024-12-19)
 
 ### Feature

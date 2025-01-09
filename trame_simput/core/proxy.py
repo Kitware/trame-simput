@@ -95,11 +95,20 @@ class Proxy:
             if _prop_name.startswith("_"):
                 continue
 
+            _size = _prop_def.get("size", None)
+            _positive_size = _size is not None and isinstance(_size, int) and _size > 0
             _init_def = _prop_def.get("initial", None)
+            _is_proxy = _prop_def.get("type", None) == "proxy"
+            _proxy_type = _prop_def.get("proxyType", None)
             if _prop_name in kwargs:
                 self.set_property(_prop_name, kwargs[_prop_name])
             elif isinstance(_init_def, dict):
                 logger.error("Don't know how to deal with domain yet: %s", _init_def)
+            elif _positive_size and _is_proxy and _proxy_type is not None:
+                _init_def = [
+                    self._proxy_manager.create(_proxy_type).id for _ in range(_size)
+                ]
+                self.set_property(_prop_name, _init_def)
             else:
                 self.set_property(_prop_name, _init_def)
 

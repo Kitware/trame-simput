@@ -1,15 +1,24 @@
 from pathlib import Path
 from trame.app import get_server
-from trame.ui.vuetify3 import SinglePageLayout
-from trame.widgets import vuetify3 as vuetify, simput, html
+from trame.widgets import simput, html
 
 from trame_simput import get_simput_manager
+
+client_type = "vue3"
+use_client2 = client_type == "vue2"
+
+if use_client2:
+    from trame.ui.vuetify2 import SinglePageLayout
+    from trame.widgets import vuetify2 as vuetify
+else:
+    from trame.ui.vuetify3 import SinglePageLayout
+    from trame.widgets import vuetify3 as vuetify
 
 # -----------------------------------------------------------------------------
 # Trame setup
 # -----------------------------------------------------------------------------
 
-server = get_server()
+server = get_server(client_type=client_type)
 state, ctrl = server.state, server.controller
 
 # -----------------------------------------------------------------------------
@@ -19,17 +28,28 @@ state, ctrl = server.state, server.controller
 DEF_DIR = Path(__file__).with_name("definitions")
 
 simput_manager = get_simput_manager()
-simput_manager.load_model(yaml_file=DEF_DIR / "model.yaml")
 
 # -----------------------------------------------------------------------------
 # Application state
 # -----------------------------------------------------------------------------
 
 pxm = simput_manager.proxymanager
+
+def load_model():
+    if use_client2:
+        simput_manager.load_model(yaml_file=DEF_DIR / "model_vue2.yaml")
+    else:
+        simput_manager.load_model(yaml_file=DEF_DIR / "model_vue3.yaml")
+
+load_model()
+
 CHOICES = []
 for obj_type in pxm.types():
     item = pxm.create(obj_type)
-    CHOICES.append({"text": obj_type, "value": item.id})
+    if use_client2:
+        CHOICES.append({"text": obj_type, "value": item.id})
+    else:
+        CHOICES.append({"title": obj_type, "value": item.id})
 
 # -----------------------------------------------------------------------------
 
@@ -40,9 +60,7 @@ def update_ui(use_xml_ui, **kwargs):
         simput_manager.load_ui(xml_file=DEF_DIR / "ui.xml")
     else:
         simput_manager.clear_ui()
-        simput_manager.load_model(
-            yaml_file=DEF_DIR / "model.yaml"
-        )  # Needed to generate UI
+        load_model()  # Needed to generate UI
 
 
 # -----------------------------------------------------------------------------
@@ -115,7 +133,7 @@ with SinglePageLayout(server) as layout:
         vuetify.VSelect(
             v_model=("active", CHOICES[0].get("value")),
             items=("choices", CHOICES),
-            dense=True,
+            variant="underlined",
             hide_details=True,
             style="max-width: 120px;",
         )

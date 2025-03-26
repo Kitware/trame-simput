@@ -142,6 +142,8 @@ class SimputController:
             )
 
     def emit(self, topic, **kwargs):
+        if not self._server.protocol:
+            return
         logger.info("emit: %s", topic)
         self._server.protocol_call("simput.push.event", topic, **kwargs)
 

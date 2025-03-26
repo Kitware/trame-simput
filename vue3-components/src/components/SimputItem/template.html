@@ -1,6 +1,6 @@
 <div v-if="available">
     <v-runtime-template v-if="!noUi" :template="ui" :data="data" />
-    <span style="display: none">{{ data }}</span>
+    <!-- <span style="display: none">{{ data }}</span> -->
     <slot name="default" v-bind="all" />
     <slot name="properties" v-bind="properties" />
 </div>

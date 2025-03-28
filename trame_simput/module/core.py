@@ -252,6 +252,7 @@ class SimputController:
         if action == "commit":
             _ids = kwargs.get("ids", [])
             for _id in _ids:
-                self._pending_changeset.pop(_id)
+                if _id in self._pending_changeset:
+                    self._pending_changeset.pop(_id)
             self._server.state[self.changecount_key] = len(self.changeset)
             self._server.state[self.changeset_key] = self.changeset

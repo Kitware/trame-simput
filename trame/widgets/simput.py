@@ -1,4 +1,4 @@
-from trame_simput.widgets.simput import *
+from trame_simput.widgets.simput import *  # noqa: F403
 
 
 def initialize(server):

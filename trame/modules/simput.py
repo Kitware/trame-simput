@@ -1,1 +1,1 @@
-from trame_simput.module import *
+from trame_simput.module import *  # noqa: F403

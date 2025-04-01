@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v2.5.2 (2025-04-01)
+
+### Fix
+
+* **commit:** Ensure committed proxies have pending properties. ([`4018651`](https://github.com/Kitware/trame-simput/commit/4018651fb3bd30303b6bffa7d65c99817fa81718))
+* **vue2:** Add legacy openssl build flag ([`ca898d8`](https://github.com/Kitware/trame-simput/commit/ca898d8abd564dc68c5a9f6941418850d0d61698))
+
 ## v2.5.1 (2025-01-09)
 
 ### Fix

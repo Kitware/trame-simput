@@ -36,7 +36,7 @@ with SinglePageLayout(server) as layout:
     simput_widget.register_layout(layout)
     with layout.content, vuetify.VContainer(fluid=True):
         simput.SimputItem(item_id=f"{address_book.id}")
-        
+
 
 if __name__ == "__main__":
     server.start()

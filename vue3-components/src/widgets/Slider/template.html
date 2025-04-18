@@ -1,7 +1,7 @@
 <v-container fluid style="position: relative" v-show="shouldShow">
   <div style="position: absolute; right: 10px; top: -1px; z-index: 1">
-    <v-btn v-if="help && size > 1" icon="mdi-lifebuoy" size="x-small" @click="showHelp = !showHelp" />
-    <v-btn v-if="computedSizeControl" icon="mdi-plus-circle-outline" size="x-small" @click="addEntry" />
+    <v-btn v-if="help && size > 1" class="elevation-0" icon="mdi-lifebuoy" size="x-small" @click="showHelp = !showHelp" />
+    <v-btn v-if="computedSizeControl" class="elevation-0" icon="mdi-plus-circle-outline" size="x-small" @click="addEntry" />
   </div>
 
   <v-row>
@@ -22,14 +22,13 @@
         <v-col class="text-truncate text-right text-caption text--secondary">
           {{ model }}
         </v-col>
-        <v-btn v-if="help" icon="mdi-lifebuoy" size="x-small" @click="showHelp = !showHelp" />
+        <v-btn v-if="help" class="elevation-0" icon="mdi-lifebuoy" size="x-small" @click="showHelp = !showHelp" />
       </v-row>
       <v-slider
         :name="`${data().type}:${name}:${i}`"
         v-model="model"
         @update:modelValue="validate()"
         hide-details
-        density="compact"
         :rules="[rule]"
         :min="computedMin"
         :max="computedMax"
@@ -45,7 +44,6 @@
         :key="idx"
         class="mb-1"
         :type="levelToType(hint.level)"
-        density="compact"
         :text="hint.message"
       />
     </v-col>
@@ -63,7 +61,6 @@
           v-model="model[i - 1]"
           @update:modelValue="validate(i)"
           hide-details
-          density="compact"
           :rules="[rule]"
           :min="computedMin"
           :max="computedMax"
@@ -74,21 +71,18 @@
         <div class="text-truncate text-right text-caption text--secondary" style="max-width: 60px;min-width: 60px;">{{ model[i - 1] }}</div>
         <v-btn
           v-if="computedSizeControl"
-          class="ml-2"
-          icon
-          x-small
+          class="ml-2 elevation-0"
+          icon="mdi-minus-circle-outline"
+          size="x-small"
           @click="deleteEntry(i - 1)"
           :disabled="!decorator.enable"
-        >
-          <v-icon>mdi-minus-circle-outline</v-icon>
-        </v-btn>
+        />
       </v-row>
       <v-alert
         v-for="hint, idx in hints"
         :key="idx"
         class="mb-1"
         :type="levelToType(hint.level)"
-        density="compact"
         :text="hint.message"
       />
     </v-col>

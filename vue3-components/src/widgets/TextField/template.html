@@ -1,14 +1,8 @@
-<v-col fluid style="position: relative" v-show="shouldShow">
+<v-col fluid style="position: relative" v-show="shouldShow" class="py-5">
   <div style="position: absolute; right: 10px; top: -1px; z-index: 1;">
-    <v-btn v-if="allowRefresh" icon x-small @click="refresh">
-      <v-icon small>mdi-sync</v-icon>
-    </v-btn>
-    <v-btn v-if="help" icon x-small @click="showHelp = !showHelp">
-      <v-icon small>mdi-lifebuoy</v-icon>
-    </v-btn>
-    <v-btn v-if="computedSizeControl" icon x-small @click="addEntry">
-      <v-icon small>mdi-plus-circle-outline</v-icon>
-    </v-btn>
+    <v-btn v-if="allowRefresh" class="elevation-0" icon="mdi-sync" size="x-small" @click="refresh"/>
+    <v-btn v-if="help" class="elevation-0" icon="mdi-lifebuoy" size="x-small" @click="showHelp = !showHelp"/>
+    <v-btn v-if="computedSizeControl" class="elevation-0" icon="mdi-plus-circle-outline" size="x-small" @click="addEntry"/>
   </div>
 
   <v-row>
@@ -20,7 +14,7 @@
       </div>
     </v-col>
   </v-row>
-  <v-row>
+  <v-row v-if="type != 'proxy'">
     <v-col v-if="size == 1" class="pt-0 pb-1">
       <v-text-field
         :name="`${data().type}:${name}:${i}`"
@@ -35,6 +29,7 @@
         @keydown.enter="validate()"
         :persistent-hint="showHelp"
         :hide-details="!showHelp || !help"
+        variant="underlined"
 
         :disabled="disabled || !decorator.enable"
         :readonly="readonly"
@@ -62,21 +57,19 @@
           @update:focused="validate(i)"
           @keydown.enter="validate(i)"
           hide-details
-
           :disabled="disabled || !decorator.enable"
           :readonly="readonly"
-        />
+          variant="underlined"
+        />    
         <v-btn
           v-if="computedSizeControl"
-          class="ml-2"
-          icon
-          x-small
+          class="ml-2 elevation-0"
+          icon="mdi-minus-circle-outline"
+          size="x-small"
           @click="deleteEntry(i - 1)"
           :disabled="disabled || !decorator.enable"
           :readonly="readonly"
-        >
-          <v-icon>mdi-minus-circle-outline</v-icon>
-        </v-btn>
+        />
       </v-row>
     </v-col>
   </v-row>
@@ -87,7 +80,6 @@
       class="mb-1"
       :type="levelToType(hint.level)"
       border="start"
-      density="compact"
     >
       {{ hint.message }}
     </v-alert>

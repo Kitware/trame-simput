@@ -361,7 +361,6 @@ Slider:
         value_range: [-10, 10]
         level: 2
 
-
   ManyDoubleFloat:
     _label: Many Double floats
     _help: >-

@@ -34,7 +34,7 @@ export default {
     // --- custom to current widget ---
     editColor: {
       type: String,
-      default: "blue lighten-5",
+      default: "transparent",
     },
     layout: {
       type: String,
@@ -58,6 +58,9 @@ export default {
     readonly: {
       type: Boolean,
       default: false,
+    },
+    proxyType: {
+      type: String,
     },
   },
   setup(props) {
@@ -205,17 +208,32 @@ export default {
       if (!model.value) {
         model.value = [];
       }
-      dynamicSize.value = model.value.length + 1;
-      model.value.length = dynamicSize.value;
 
-      if (props.newValue === "null") {
-        model.value[model.value.length - 1] = null;
-      } else if (props.newValue === "same") {
-        model.value[model.value.length - 1] =
-          model.value[model.value.length - 2];
+      if (props.type == "proxy") {
+        getSimput()
+          .wsClient.getConnection()
+          .getSession()
+          .call("simput.create_proxy", [
+            simputChannel.managerId.value,
+            props.proxyType,
+          ])
+          .then((proxy_id) => {
+            if (proxy_id != undefined) {
+              model.value.push(proxy_id);
+              dirty(props.name);
+            }
+            dynamicSize.value = model.value.length;
+            validate(dynamicSize.value);
+          });
+      } else {
+        if (props.newValue === "null") {
+          model.value.push(null);
+        } else if (props.newValue === "same") {
+          model.value.push(model.value[model.value.length - 2]);
+        }
+        dynamicSize.value = model.value.length;
+        validate(dynamicSize.value);
       }
-
-      validate(dynamicSize.value);
     };
 
     const deleteEntry = function deletEntry(index) {

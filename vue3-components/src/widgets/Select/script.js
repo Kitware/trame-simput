@@ -203,4 +203,9 @@ export default {
       shouldShow,
     };
   },
+  methods: {
+    resolveItemTitle(item) {
+      return item.title ?? item.text ?? undefined;
+    }
+  },
 };

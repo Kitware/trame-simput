@@ -37,10 +37,7 @@ pxm = simput_manager.proxymanager
 
 
 def load_model():
-    if use_client2:
-        simput_manager.load_model(yaml_file=DEF_DIR / "model_vue2.yaml")
-    else:
-        simput_manager.load_model(yaml_file=DEF_DIR / "model_vue3.yaml")
+    simput_manager.load_model(yaml_file=DEF_DIR / "model.yaml")
 
 
 load_model()

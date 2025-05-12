@@ -5,6 +5,8 @@
     v-model="model"
     variant="underlined"
     :items="computedItems"
+    :item-title="resolveItemTitle"
+    item-value="value"
     :multiple="multiple"
     @update:modelValue="validate"
     :hint="computedHelp"

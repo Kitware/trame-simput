@@ -205,6 +205,29 @@ Select:
           - text: Case 4
             value: 4
 
+  Section:
+    _label: Drop Down with sub-sections
+    _help: >-
+      Example of a drop down with sub-sections
+    type: string
+    size: -1
+    initial:
+      - A
+      - '1'
+    domains:
+      - type: LabelList
+        values:
+          - header: Letter cases
+          - text: Case A
+            value: A
+          - text: Case B
+            value: B
+          - header: Number cases
+          - text: Case 1
+            value: '1'
+          - text: Case 2
+            value: '2'
+
   SelectDynamicList:
     _label: Dynamic available
     _help: Just to try remote domain list

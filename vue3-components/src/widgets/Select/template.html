@@ -13,5 +13,13 @@
     :persistent-hint="!!(useRangeHelp || help)"
     :disabled="disabled || !decorator.enable"
     :readonly="readonly"
-  />
-</v-col>
+  >
+    <template #item="{ item, props }">
+      <v-list-subheader v-if="item.raw.header">
+        {{ item.raw.header }}
+      </v-list-subheader>
+
+      <v-list-item v-else v-bind="props" />
+    </template>
+  </v-select>
+ </v-col>

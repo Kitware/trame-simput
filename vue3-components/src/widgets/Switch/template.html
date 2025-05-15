@@ -6,7 +6,6 @@
       :hint="help"
       v-model="model"
       @update:modelValue="validate"
-      density="compact"
       hide-details
       :disabled="disabled || !decorator.enable"
       :readonly="readonly"
@@ -14,6 +13,7 @@
     <v-spacer />
     <v-btn
       v-if="help"
+      class="elevation-0"
       icon="mdi-lifebuoy"
       size="x-small"
       style="position: absolute; right: 0;"

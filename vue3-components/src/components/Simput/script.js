@@ -38,6 +38,7 @@ export default {
         () => emit("query", props.query?.toLowerCase() || ""),
         250
       ),
+      managerId,
     };
 
     const updateManager = function updateManager() {

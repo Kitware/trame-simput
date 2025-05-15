@@ -38,14 +38,12 @@ export default {
       name: toRef(props.name),
     });
 
-    const dynamicSize = ref(props.size);
     const properties = inject("properties");
 
     const model = computed({
       get() {
         /* eslint-disable no-unused-expressions */
         props.mtime; // force refresh
-        dynamicSize.value;
         const value = properties() && properties()[props.name];
         if (!value && props.size > 1) {
           const emptyArray = [];

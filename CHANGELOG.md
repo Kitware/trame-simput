@@ -2,6 +2,19 @@
 
 <!--next-version-placeholder-->
 
+## v2.6.0 (2025-05-22)
+
+### Feature
+
+* **select:** Support vuetify2-style select headers ([`5904d98`](https://github.com/Kitware/trame-simput/commit/5904d9871ecf8d527b3a26617c6f1c3327e22a48))
+* **select:** Support vuetify2-style select in vue3 ([`49aaef8`](https://github.com/Kitware/trame-simput/commit/49aaef84da891aa9e7258d2517eb090d6d4fa86e))
+* **Proxy:** Support list of proxies with vue3 client ([`f029b5e`](https://github.com/Kitware/trame-simput/commit/f029b5e07f7e5cff27fa5f7f32aaa84ea02ac523))
+
+### Fix
+
+* **protocol:** Fix missing server protocol ([`d22ad18`](https://github.com/Kitware/trame-simput/commit/d22ad18657db5c97189b5bdbe215643de2d55251))
+* **example:** Fix example 01 to work with vue3 ([`aaf93cc`](https://github.com/Kitware/trame-simput/commit/aaf93ccce6f90cb5ff616b4c9ff1d7e7079e14ee))
+
 ## v2.5.2 (2025-04-01)
 
 ### Fix

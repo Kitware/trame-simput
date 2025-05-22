@@ -2,14 +2,24 @@
   <v-select
     :key="tsKey"
     :label="label"
-    :hint="computedHelp"
     v-model="model"
-    density="compact"
+    variant="underlined"
     :items="computedItems"
+    :item-title="resolveItemTitle"
+    item-value="value"
     :multiple="multiple"
     @update:modelValue="validate"
+    :hint="computedHelp"
     :persistent-hint="!!(useRangeHelp || help)"
     :disabled="disabled || !decorator.enable"
     :readonly="readonly"
-  />
-</v-col>
+  >
+    <template #item="{ item, props }">
+      <v-list-subheader v-if="item.raw.header">
+        {{ item.raw.header }}
+      </v-list-subheader>
+
+      <v-list-item v-else v-bind="props" />
+    </template>
+  </v-select>
+ </v-col>

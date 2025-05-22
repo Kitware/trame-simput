@@ -1,5 +1,5 @@
 Person:
-  _label: Personal Informations
+  _label: Personal Information
   FirstName:
     _label: First Name
     type: string

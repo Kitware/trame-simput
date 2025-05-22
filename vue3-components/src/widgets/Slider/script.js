@@ -107,7 +107,7 @@ export default {
       get() {
         /* eslint-disable no-unused-expressions */
         props.mtime; // force refresh
-        props.dynamicSize;
+        dynamicSize.value;
         return properties() && properties()[props.name];
       },
       set(v) {
@@ -122,7 +122,7 @@ export default {
     });
 
     const computedSize = computed(() => {
-      if (Number(props.size.value) !== 1) {
+      if (Number(props.size) !== 1) {
         return Math.max(props.size, model.value.length);
       }
       return Number(props.size);
@@ -217,8 +217,8 @@ export default {
       dirty(props.name);
     };
     const addEntry = function addEntry() {
-      props.dynamicSize = model.value.length + 1;
-      model.value.length = props.dynamicSize;
+      dynamicSize.value = model.value.length + 1;
+      model.value.length = dynamicSize.value;
       validate(dynamicSize.value);
     };
 

@@ -265,7 +265,7 @@ class Proxy:
     def get_property(self, name, default=None):
         """Return a property value"""
         value = self._properties.get(name, default)
-        if "proxy" == self.definition.get(name).get("type"):
+        if "proxy" == self.definition.get(name, {}).get("type"):
             if isinstance(value, list):
                 return [self._proxy_manager.get(proxy_id) for proxy_id in value]
             return self._proxy_manager.get(self._properties.get(name))

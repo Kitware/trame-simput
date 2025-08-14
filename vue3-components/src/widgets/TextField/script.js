@@ -174,30 +174,21 @@ export default {
     };
 
     const validate = function validate(component = 0) {
-      // console.log('validate', component, this.size);
-      let isDirty = false;
-      // let useInitial = false;
       const value = component ? model.value[component - 1] : model.value;
+      const newValue = convert.value(value);
       if (Number(props.size) !== 1) {
-        isDirty = model.value[component - 1] !== convert.value(value);
-        model.value[component - 1] = convert.value(value);
-        if (model.value[component - 1] === null) {
+        model.value[component - 1] = newValue;
+        if (newValue === null) {
           model.value[component - 1] = props.initial?.[component - 1];
-          // useInitial = true;
         }
         model.value = model.value.slice();
       } else {
-        isDirty = model.value !== convert.value(value);
-        model.value = convert.value(value);
+        model.value = newValue;
         if (model.value === null) {
           model.value = props.initial;
-          // useInitial = true;
         }
       }
-      // console.log('validate', component, isDirty, useInitial);
-      if (isDirty) {
-        dirty(props.name);
-      }
+      dirty(props.name);
     };
 
     const refresh = function refresh() {
@@ -281,7 +272,6 @@ export default {
     };
 
     const update = function update(component = 0) {
-      // console.log('update', component, this.size);
       const value = component ? model.value[component - 1] : model.value;
       // must test against bool since it can be a string in case of error
       if (rule.value(value) === true) {

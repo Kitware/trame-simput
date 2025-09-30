@@ -49,7 +49,7 @@ The __YAML__ structure follow the given hierarchy:
 1. Proxy type: Unique string representing the type of a given proxy.
    1. _tags: Internal key use to capture a list of `labels` for a given proxy so they can be found/filtered later on.
    2. Property name: Unique string within current proxy representing an entry in your data model.
-      1. Property caracteristics:
+      1. Property characteristics:
          1. size: How many values should be stored for that property. Skipping size attribute will imply a size of 1.
             If size is superior to 1, or set to -1, the property will be interpreted as a list.
             If size is set to -1, the size is dynamic, otherwise it is fixed.

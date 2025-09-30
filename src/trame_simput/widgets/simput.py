@@ -12,7 +12,8 @@ class HtmlElement(AbstractElement):
 
 class Simput(HtmlElement):
     """
-    Simput data management component. This must be registered as the root of a layout to provide children with Simput data.
+    Simput data management component.
+    This must be registered as the root of a layout to provide children with Simput data.
 
     :param ui_manager: See simput docs |simput_link| for more info
     :param domains_manager: See simput docs |simput_link| for more info
@@ -71,8 +72,8 @@ class Simput(HtmlElement):
         List of properties and value to update
 
         >>> change_set = [
-        ... {"id":"12", "name":"Radius", "value": 0.75},
-        ... {"id": "12", "name":"Resolution", "value": 24}
+        ...     {"id": "12", "name": "Radius", "value": 0.75},
+        ...     {"id": "12", "name": "Resolution", "value": 24},
         ... ]
 
         """
@@ -129,7 +130,8 @@ class Simput(HtmlElement):
 
 class SimputItem(HtmlElement):
     """
-    Simput data display component. This must be child of a Simput component to have access to Simput data. See simput docs |simput_link| for more info.
+    Simput data display component. This must be child of a Simput component to have access to Simput data.
+    See simput docs |simput_link| for more info.
 
     :param item_id: The simput id of the data to display
     :type item_id: str

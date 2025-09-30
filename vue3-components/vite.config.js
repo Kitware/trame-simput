@@ -20,7 +20,7 @@ export default {
         },
       },
     },
-    outDir: "../trame_simput/module/serve",
+    outDir: "../src/trame_simput/module/serve",
     assetsDir: ".",
   },
 };

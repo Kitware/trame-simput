@@ -10,7 +10,11 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - &Checkout
+        name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v2
         with:
@@ -48,39 +52,40 @@ jobs:
         shell: bash
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - *Checkout
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install and Run Tests
-      run: |
-        pip install .
-        pip install -r tests/requirements.txt
-        pytest -s ./tests
+      - name: Install and Run Tests
+        run: |
+          pip install .
+          pip install -r tests/requirements.txt
+          pytest -s ./tests
 
   test-npm-build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - *Checkout
 
-      - name: Set Up Node
+      - &SetUpNode
+        name: Set Up Node
         uses: actions/setup-node@v3
         with:
           node-version: 22
 
-      - name: Build Vue2 Components
+      - &BuildVue2Components
+        name: Build Vue2 Components
         run: |
           cd vue2-components
           npm ci
           npm run build
 
-      - name: Build Vue3 Components
+      - &BuildVue3Components
+        name: Build Vue3 Components
         run: |
           cd vue3-components
           npm ci
@@ -90,33 +95,28 @@ jobs:
     needs: [pre-commit, pytest, test-npm-build]
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
+    environment:
+      name: pypi
+      url: https://pypi.org/p/trame-simput
+    permissions:
+      id-token: write # IMPORTANT: mandatory for trusted publishing
+      contents: write # IMPORTANT: mandatory for making GitHub Releases
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      - *Checkout
 
-      - name: Set Up Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 22
+      - *SetUpNode
 
-      - name: Build Vue2 Components
-        run: |
-          cd vue2-components
-          npm ci
-          npm run build
+      - *BuildVue2Components
 
-      - name: Build Vue3 Components
-        run: |
-          cd vue3-components
-          npm ci
-          npm run build
+      - *BuildVue3Components
 
       - name: Python Semantic Release
-        uses: relekang/python-semantic-release@v7.34.6
+        id: release
+        uses: relekang/python-semantic-release@v10.3.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          repository_username: __token__
-          repository_password: ${{ secrets.PYPI_API_TOKEN }}
+
+      - name: Publish package distributions to PyPI
+        if: steps.release.outputs.released == 'true'
+        uses: pypa/gh-action-pypi-publish@release/v1

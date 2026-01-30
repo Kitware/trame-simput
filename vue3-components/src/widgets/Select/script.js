@@ -166,7 +166,7 @@ export default {
       return `${props.name?.toLowerCase() || ""} ${
         props.label?.toLowerCase() || ""
       } ${props.help?.toLowerCase() || ""} ${JSON.stringify(
-        computedItems.value
+        computedItems.value,
       )}`;
     });
 
@@ -206,6 +206,6 @@ export default {
   methods: {
     resolveItemTitle(item) {
       return item.title ?? item.text ?? undefined;
-    }
+    },
   },
 };

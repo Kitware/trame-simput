@@ -26,7 +26,7 @@ export default {
         return true;
       }
       return domain.available.map((v) => v.value).includes(propertyValue);
-    }
+    };
 
     const visible = computed(isVisible);
 

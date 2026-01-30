@@ -12,8 +12,8 @@ AdvancedViewExample:
     type: uint8
     initial: 1
     domains:
-    - name: decorator
-      type: TagDecoratorDomain
-      properties:
-        tags:
-        - "advanced"
+      - name: decorator
+        type: TagDecoratorDomain
+        properties:
+          tags:
+            - "advanced"

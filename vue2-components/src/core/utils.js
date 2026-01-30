@@ -6,8 +6,9 @@ export const COMPUTED = {
   query: {
     textToQuery() {
       // ${this.help?.toLowerCase() || ''}
-      return `${this.name?.toLowerCase() || ''} ${this.label?.toLowerCase() ||
-        ''}`;
+      return `${this.name?.toLowerCase() || ''} ${
+        this.label?.toLowerCase() || ''
+      }`;
     },
     shouldShow() {
       if (this.query && this.decorator.query) {

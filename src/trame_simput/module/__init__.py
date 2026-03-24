@@ -1,4 +1,6 @@
 from pathlib import Path
+from trame_simput import __version__
+
 from .protocol import SimputProtocol
 
 # Compute local path to serve
@@ -26,9 +28,9 @@ def setup(server, **kargs):
     global scripts
 
     if client_type == "vue2":
-        scripts = ["__trame_simput/vue-trame_simput.umd.min.js"]
+        scripts = [f"__trame_simput_{__version__}/vue-trame_simput.umd.min.js"]
     elif client_type == "vue3":
-        scripts = ["__trame_simput/vue3-trame_simput.umd.js"]
+        scripts = [f"__trame_simput_{__version__}/vue3-trame_simput.umd.js"]
     else:
         raise TypeError(
             f"Trying to initialize trame_simput with unknown client_type={client_type}"

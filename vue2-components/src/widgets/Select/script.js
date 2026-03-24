@@ -95,8 +95,9 @@ export default {
     ...COMPUTED.decorator,
     ...COMPUTED.convert,
     textToQuery() {
-      return `${this.name?.toLowerCase() || ''} ${this.label?.toLowerCase() ||
-        ''} ${this.help?.toLowerCase() || ''} ${JSON.stringify(
+      return `${this.name?.toLowerCase() || ''} ${
+        this.label?.toLowerCase() || ''
+      } ${this.help?.toLowerCase() || ''} ${JSON.stringify(
         this.computedItems
       )}`;
     },

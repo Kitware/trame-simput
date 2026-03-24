@@ -1,5 +1,5 @@
 export default {
-  name: 'swText',
+  name: "swText",
   props: {
     content: {
       type: String,

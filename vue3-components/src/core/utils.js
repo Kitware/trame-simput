@@ -133,7 +133,7 @@ export class DataManager {
             this.cache.data[id] = data;
             if (before == undefined) {
               this.expectedServerProps[id] = JSON.parse(
-                JSON.stringify(data.properties)
+                JSON.stringify(data.properties),
               ); // deep copy
             }
             //   console.log(`data(${id}) == CHANGE`);
@@ -213,7 +213,7 @@ export class DataManager {
       if (name) {
         const value = this.cache.data[id].properties[name];
         let idx = this.dirtySet.findIndex(
-          (e) => e.id === id && e.name === name
+          (e) => e.id === id && e.name === name,
         );
         if (idx > -1) this.dirtySet.splice(idx, 1);
         this.dirtySet.push({ id, name, value });
@@ -223,7 +223,7 @@ export class DataManager {
           const name = names[i];
           const value = this.cache.data[id].properties[name];
           let idx = this.dirtySet.findIndex(
-            (e) => e.id === id && e.name === name
+            (e) => e.id === id && e.name === name,
           );
           if (idx > -1) this.dirtySet.splice(idx, 1);
           this.dirtySet.push({ id, name, value });

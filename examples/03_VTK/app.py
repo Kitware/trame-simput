@@ -214,7 +214,10 @@ with SinglePageWithDrawerLayout(server) as layout:
                     vuetify.VIcon("mdi-database-export-outline")
                     trame.ClientStateChange(
                         value="export_content",
-                        change="export_content && utils.download('VTKState.json', export_content)",
+                        change="""
+                            export_content &&
+                            utils.download('VTKState.json', export_content)
+                        """,
                     )
             html.Span("Export State")
 

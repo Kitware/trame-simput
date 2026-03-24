@@ -1,18 +1,15 @@
 <v-textarea
   v-show="decorator.show"
   density="compact"
-
   :label="label"
   :hint="help"
   v-model="model"
   @change="validate"
-
   :auto-grow="auto-grow"
   :autofocus="autofocus"
   :clearable="clearable"
   :readonly="readonly"
   :no-resize="no-resize"
   :rows="rows"
-
   :disabled="disabled || !decorator.enable"
 />

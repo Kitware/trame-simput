@@ -65,7 +65,9 @@ class PropertyDomain:
         self._proxy.set_property(self._property_name, v)
 
     def valid(self, required_level=2):
-        """Return true if the current proxy property value is valid for the given level"""
+        """
+        Return true if the current proxy property value is valid for the given level
+        """
         return True
 
     @property
@@ -89,7 +91,9 @@ class PropertyDomain:
         self._message = value
 
     def hints(self):
-        """Return a set of (level, message) when running the validation for the info level"""
+        """
+        Return a set of (level, message) when running the validation for the info level
+        """
         if self.valid(-1):
             return []
         return [
@@ -179,7 +183,8 @@ class Range(PropertyDomain):
                 _v = data_range[1]
             else:
                 print(
-                    f"Range domain can't compute {self.__compute}. Expect 'mean', 'min' or 'max' instead."
+                    f"Range domain can't compute {self.__compute}. "
+                    "Expect 'mean', 'min' or 'max' instead."
                 )
 
             prop_size = self._proxy.definition.get(self._property_name).get("size", 1)

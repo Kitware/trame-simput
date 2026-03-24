@@ -13,11 +13,13 @@ class HtmlElement(AbstractElement):
 class Simput(HtmlElement):
     """
     Simput data management component.
-    This must be registered as the root of a layout to provide children with Simput data.
+    This must be registered as the root of a layout to provide children with Simput
+    data.
 
     :param ui_manager: See simput docs |simput_link| for more info
     :param domains_manager: See simput docs |simput_link| for more info
-    :param prefix: Constructing a Simput component will set several variables, optionally prefixed by a namespace
+    :param prefix: Constructing a Simput component will set several variables,
+        optionally prefixed by a namespace
     :type prefix:  str | None
     :param query: String filtering
     :type query: str
@@ -130,7 +132,8 @@ class Simput(HtmlElement):
 
 class SimputItem(HtmlElement):
     """
-    Simput data display component. This must be child of a Simput component to have access to Simput data.
+    Simput data display component.
+    This must be child of a Simput component to have access to Simput data.
     See simput docs |simput_link| for more info.
 
     :param item_id: The simput id of the data to display
@@ -139,7 +142,8 @@ class SimputItem(HtmlElement):
     :type extract: list[str]
     :param no_ui: Whether to show simput template UI
     :type no_ui: bool
-    :param v_slot: Fields to be pass to slot template (i.e.: data, ui, domain, properties, all...)
+    :param v_slot: Fields to be pass to slot template
+        (i.e.: data, ui, domain, properties, all...)
     :type v_slot: str
     :param children: The children nested within this element
     :type children:  str | list[trame.html.*] | trame.html.* | None

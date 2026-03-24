@@ -18,13 +18,13 @@ export const TYPES = {
     rule(value) {
       const n = Number(value);
       if (!Number.isFinite(n)) {
-        return 'Provided value is not a valid number';
+        return "Provided value is not a valid number";
       }
       if (!Number.isInteger(n)) {
-        return 'Provided number is not an integer';
+        return "Provided number is not an integer";
       }
       if (n < 0 || n > 255) {
-        return 'Provided number is outside of the range [0, 255]';
+        return "Provided number is outside of the range [0, 255]";
       }
       return true;
     },
@@ -46,13 +46,13 @@ export const TYPES = {
     rule(value) {
       const n = Number(value);
       if (!Number.isFinite(n)) {
-        return 'Provided value is not a valid number';
+        return "Provided value is not a valid number";
       }
       if (!Number.isInteger(n)) {
-        return 'Provided number is not an integer';
+        return "Provided number is not an integer";
       }
       if (n < 0 || n > 65535) {
-        return 'Provided number is outside of the range [0, 65535]';
+        return "Provided number is outside of the range [0, 65535]";
       }
       return true;
     },
@@ -74,13 +74,13 @@ export const TYPES = {
     rule(value) {
       const n = Number(value);
       if (!Number.isFinite(n)) {
-        return 'Provided value is not a valid number';
+        return "Provided value is not a valid number";
       }
       if (!Number.isInteger(n)) {
-        return 'Provided number is not an integer';
+        return "Provided number is not an integer";
       }
       if (n < 0 || n > 4294967295) {
-        return 'Provided number is outside of the range [0, 4294967295]';
+        return "Provided number is outside of the range [0, 4294967295]";
       }
       return true;
     },
@@ -99,13 +99,13 @@ export const TYPES = {
     rule(value) {
       const n = Number(value);
       if (!Number.isFinite(n)) {
-        return 'Provided value is not a valid number';
+        return "Provided value is not a valid number";
       }
       if (!Number.isInteger(n)) {
-        return 'Provided number is not an integer';
+        return "Provided number is not an integer";
       }
       if (n < 0) {
-        return 'Provided number is outside of the range [0, inf]';
+        return "Provided number is outside of the range [0, inf]";
       }
       return true;
     },
@@ -127,13 +127,13 @@ export const TYPES = {
     rule(value) {
       const n = Number(value);
       if (!Number.isFinite(n)) {
-        return 'Provided value is not a valid number';
+        return "Provided value is not a valid number";
       }
       if (!Number.isInteger(n)) {
-        return 'Provided number is not an integer';
+        return "Provided number is not an integer";
       }
       if (n < -128 || n > 127) {
-        return 'Provided number is outside of the range [-128, 127]';
+        return "Provided number is outside of the range [-128, 127]";
       }
       return true;
     },
@@ -155,13 +155,13 @@ export const TYPES = {
     rule(value) {
       const n = Number(value);
       if (!Number.isFinite(n)) {
-        return 'Provided value is not a valid number';
+        return "Provided value is not a valid number";
       }
       if (!Number.isInteger(n)) {
-        return 'Provided number is not an integer';
+        return "Provided number is not an integer";
       }
       if (n < -32768 || n > 32767) {
-        return 'Provided number is outside of the range [-32768, 32767]';
+        return "Provided number is outside of the range [-32768, 32767]";
       }
       return true;
     },
@@ -183,13 +183,13 @@ export const TYPES = {
     rule(value) {
       const n = Number(value);
       if (!Number.isFinite(n)) {
-        return 'Provided value is not a valid number';
+        return "Provided value is not a valid number";
       }
       if (!Number.isInteger(n)) {
-        return 'Provided number is not an integer';
+        return "Provided number is not an integer";
       }
       if (n < -2147483648 || n > 2147483647) {
-        return 'Provided number is outside of the range [-2147483648, 2147483647]';
+        return "Provided number is outside of the range [-2147483648, 2147483647]";
       }
       return true;
     },
@@ -205,10 +205,10 @@ export const TYPES = {
     rule(value) {
       const n = Number(value);
       if (!Number.isFinite(n)) {
-        return 'Provided value is not a valid number';
+        return "Provided value is not a valid number";
       }
       if (!Number.isInteger(n)) {
-        return 'Provided number is not an integer';
+        return "Provided number is not an integer";
       }
       return true;
     },
@@ -224,7 +224,7 @@ export const TYPES = {
     rule(value) {
       const n = Number(value);
       if (Number.isNaN(n)) {
-        return 'Provided value is not a number';
+        return "Provided value is not a number";
       }
       return true;
     },
@@ -240,7 +240,7 @@ export const TYPES = {
     rule(value) {
       const n = Number(value);
       if (Number.isNaN(n)) {
-        return 'Provided value is not a number';
+        return "Provided value is not a number";
       }
       return true;
     },

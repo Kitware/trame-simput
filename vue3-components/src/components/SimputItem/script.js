@@ -94,7 +94,7 @@ export default {
     });
 
     const available = computed(
-      () => !!(data.value && domains.value && ui.value)
+      () => !!(data.value && domains.value && ui.value),
     );
     const properties = computed(() => data.value?.properties);
 
@@ -124,7 +124,7 @@ export default {
 
         // Update data to match given itemId
         update();
-      }
+      },
     );
 
     provide("dirty", (name) => dirty(name));

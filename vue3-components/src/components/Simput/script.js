@@ -36,7 +36,7 @@ export default {
       $emit: (...args) => emitter.emit(...args),
       pushQuery: debounce(
         () => emit("query", props.query?.toLowerCase() || ""),
-        250
+        250,
       ),
       managerId,
     };
@@ -55,7 +55,7 @@ export default {
       manager.value = getSimputManager(
         managerId.value,
         props.namespace,
-        client.value
+        client.value,
       );
 
       manager.value.connectBus(simputChannel);

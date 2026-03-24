@@ -455,7 +455,8 @@ class Proxy:
     def domains_state(self):
         """
         Return a serializable state of the domains associated to this proxy.
-        This include for each property and each domain a `valid` and `available` property.
+        This include for each property and each domain a `valid` and `available`
+        property.
         Also at the property level a list of `hints`.
 
         ```
@@ -658,7 +659,8 @@ class ProxyManager:
         # Can't create object if no definition available
         if proxy_type not in self._model_definition:
             raise ValueError(
-                f"Object of type: {proxy_type} was not found in our loaded model definitions"
+                f"Object of type: {proxy_type} was not found in our loaded model"
+                "definitions"
             )
 
         self._life_cycle(

@@ -7,7 +7,7 @@ from .protocol import SimputProtocol
 serve_path = str(Path(__file__).with_name("serve").resolve())
 
 # Serve directory for JS/CSS files
-serve = {"__trame_simput": serve_path}
+serve = {f"__trame_simput_{__version__}": serve_path}
 
 # List of JS files to load (usually from the serve path above)
 scripts = []

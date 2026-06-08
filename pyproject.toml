@@ -1,6 +1,6 @@
 [project]
 name = "trame-simput"
-version = "2.6.3"
+version = "2.6.4"
 description = "Simput implementation for trame "
 authors = [
     {name = "Kitware Inc."},
@@ -30,6 +30,7 @@ dev = [
     "ruff",
     "pytest",
 ]
+
 
 [build-system]
 requires = ["hatchling"]

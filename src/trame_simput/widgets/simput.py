@@ -35,8 +35,9 @@ class Simput(HtmlElement):
         ns = f"simput_{self._id}"
         if prefix:
             ns = prefix
-        self._ref = kwargs.get("ref", ns)
         self._helper = SimputController(self._server, ui_manager, namespace=ns)
+        ns = self.server.translator.translate_key(ns)
+        self._ref = kwargs.get("ref", ns)
         self._attributes["namespace"] = f'namespace="{ns}"'
         self._attributes["ref"] = f'ref="{self._ref}"'
         self._attr_names += ["query"]

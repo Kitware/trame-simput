@@ -1,6 +1,6 @@
 [project]
 name = "trame-simput"
-version = "2.6.5"
+version = "2.6.6"
 description = "Simput implementation for trame "
 authors = [
     {name = "Kitware Inc."},

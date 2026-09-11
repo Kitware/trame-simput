@@ -1,4 +1,4 @@
-.. |pypi_download| image:: https://img.shields.io/pypi/dm/trame-simput
+.. |pypi_download| image:: https://kitware.github.io/trame/downloads/trame-simput.svg
 
 ===========================================================
 trame-simput |pypi_download|
